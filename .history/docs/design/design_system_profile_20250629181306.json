@@ -1,0 +1,246 @@
+{
+  "designSystem": {
+    "name": "LazyLab BrewCo Design System",
+    "version": "1.0",
+    "description": "Bold, playful craft beer brand design system with high-contrast layouts and vibrant color schemes",
+    
+    "colorPalette": {
+      "primary": {
+        "vibrantOrange": "#FF6B35",
+        "electricPink": "#FF10F0",
+        "neonYellow": "#FFD23F",
+        "brightPurple": "#8A2BE2"
+      },
+      "secondary": {
+        "deepBlack": "#1A1A1A",
+        "charcoalGray": "#2D2D2D",
+        "white": "#FFFFFF",
+        "softGray": "#F5F5F5"
+      },
+      "accent": {
+        "lime": "#32CD32",
+        "turquoise": "#40E0D0",
+        "coral": "#FF7F50",
+        "lavender": "#E6E6FA"
+      }
+    },
+
+    "typography": {
+      "headings": {
+        "style": "Bold, sans-serif",
+        "weight": "700-900",
+        "characteristics": [
+          "Lowercase preferred for main headlines",
+          "High contrast against backgrounds",
+          "Large scale hierarchy",
+          "Playful, approachable tone"
+        ]
+      },
+      "body": {
+        "style": "Clean sans-serif",
+        "weight": "400-600",
+        "characteristics": [
+          "High readability",
+          "Consistent line spacing",
+          "Balanced font sizes"
+        ]
+      },
+      "buttons": {
+        "style": "Bold, uppercase or sentence case",
+        "weight": "600-700",
+        "characteristics": [
+          "Clear call-to-action styling",
+          "High contrast text"
+        ]
+      }
+    },
+
+    "layoutPrinciples": {
+      "gridSystem": {
+        "type": "Flexible grid with asymmetric layouts",
+        "characteristics": [
+          "Mixed content blocks",
+          "Varied sizing for visual interest",
+          "Responsive breakpoints",
+          "Generous whitespace usage"
+        ]
+      },
+      "composition": {
+        "approach": "Dynamic, non-uniform layouts",
+        "patterns": [
+          "Hero sections with bold statements",
+          "Product showcase grids",
+          "Split-screen layouts",
+          "Overlapping elements for depth"
+        ]
+      }
+    },
+
+    "componentLibrary": {
+      "navigation": {
+        "style": "Horizontal pill-shaped buttons",
+        "characteristics": [
+          "Rounded corners (border-radius: 20-30px)",
+          "Bright colors on dark backgrounds",
+          "Hover state transitions",
+          "Consistent spacing between items"
+        ]
+      },
+      "buttons": {
+        "primary": {
+          "style": "Rounded rectangles with bold colors",
+          "states": ["default", "hover", "active"],
+          "characteristics": [
+            "High contrast",
+            "Clear typography",
+            "Consistent padding",
+            "Smooth transitions"
+          ]
+        },
+        "secondary": {
+          "style": "Outline or ghost buttons",
+          "characteristics": [
+            "Subtle but visible",
+            "Complementary to primary actions"
+          ]
+        }
+      },
+      "cards": {
+        "style": "Clean, minimal with rounded corners",
+        "characteristics": [
+          "Subtle shadows or borders",
+          "Consistent padding",
+          "Image-first design",
+          "Clear information hierarchy"
+        ]
+      },
+      "productDisplay": {
+        "style": "Floating/elevated product shots",
+        "characteristics": [
+          "High-quality product photography",
+          "Clean backgrounds",
+          "Consistent scale and positioning",
+          "Shadow effects for depth"
+        ]
+      }
+    },
+
+    "visualStyle": {
+      "aesthetic": "Modern, playful, craft-focused",
+      "mood": "Energetic, approachable, premium casual",
+      "characteristics": [
+        "High contrast color combinations",
+        "Bold typography treatments",
+        "Generous use of vibrant colors",
+        "Clean, uncluttered layouts",
+        "Playful geometric elements",
+        "Strong brand personality"
+      ]
+    },
+
+    "imageStyle": {
+      "photography": {
+        "style": "Clean, bright, lifestyle-focused",
+        "characteristics": [
+          "High contrast lighting",
+          "Minimal backgrounds",
+          "Product-focused compositions",
+          "Consistent color treatment"
+        ]
+      },
+      "graphics": {
+        "style": "Bold, geometric, minimal",
+        "characteristics": [
+          "Simple iconography",
+          "Consistent visual language",
+          "Brand-aligned color usage"
+        ]
+      }
+    },
+
+    "interactionPatterns": {
+      "hover": {
+        "style": "Smooth color transitions and scale effects",
+        "duration": "0.2-0.3 seconds",
+        "easing": "ease-in-out"
+      },
+      "focus": {
+        "style": "Clear focus indicators",
+        "characteristics": [
+          "Accessible focus states",
+          "Consistent across components"
+        ]
+      }
+    },
+
+    "layoutTemplates": {
+      "hero": {
+        "structure": "Large heading + supporting text + CTA",
+        "characteristics": [
+          "Bold typography",
+          "High-contrast backgrounds",
+          "Clear call-to-action placement"
+        ]
+      },
+      "productGrid": {
+        "structure": "Responsive grid with product cards",
+        "characteristics": [
+          "Consistent card sizing",
+          "Clean product imagery",
+          "Price and name prominence"
+        ]
+      },
+      "splitScreen": {
+        "structure": "Two-column layout with contrasting content",
+        "characteristics": [
+          "Balanced visual weight",
+          "Complementary color schemes",
+          "Clear content separation"
+        ]
+      }
+    },
+
+    "brandingElements": {
+      "logo": {
+        "placement": "Top-left corner",
+        "style": "Clean, readable typography with icon",
+        "characteristics": [
+          "Consistent sizing",
+          "High contrast placement",
+          "Brand recognition priority"
+        ]
+      },
+      "messaging": {
+        "tone": "Casual, confident, craft-focused",
+        "characteristics": [
+          "Lowercase headings for approachability",
+          "Clear, direct language",
+          "Playful but professional"
+        ]
+      }
+    },
+
+    "responsiveStrategy": {
+      "approach": "Mobile-first, progressive enhancement",
+      "breakpoints": {
+        "mobile": "320px-768px",
+        "tablet": "768px-1024px",
+        "desktop": "1024px+"
+      },
+      "adaptations": [
+        "Simplified navigation on mobile",
+        "Stacked layouts for smaller screens",
+        "Optimized touch targets",
+        "Consistent brand experience across devices"
+      ]
+    },
+
+    "accessibilityGuidelines": {
+      "colorContrast": "WCAG AA compliant",
+      "typography": "Readable font sizes and spacing",
+      "navigation": "Keyboard accessible",
+      "images": "Meaningful alt text",
+      "focusStates": "Clear and consistent"
+    }
+  }
+}
