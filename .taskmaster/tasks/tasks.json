@@ -1,0 +1,342 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Next.js 14 Project with TypeScript",
+        "description": "Set up the project repository with Next.js 14 (App Router), TypeScript, and configure the development environment with ESLint and Prettier using Standard.js style.",
+        "details": "1. Create a new Next.js project with TypeScript support:\n```bash\nnpx create-next-app@latest pickup-and-play --typescript --eslint --app --tailwind\n```\n2. Configure ESLint and Prettier with Standard.js rules\n3. Set up the project structure following Next.js 14 App Router conventions\n4. Configure Vercel deployment and CI/CD pipeline\n5. Set up Git repository with appropriate .gitignore\n6. Initialize package.json with required dependencies\n7. Create README.md with project setup instructions",
+        "testStrategy": "Verify that the project builds without errors and the development server runs correctly. Ensure ESLint and Prettier are properly configured by running linting checks.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Design System with TailwindCSS and Shadcn UI",
+        "description": "Set up TailwindCSS with the brand colors, typography, and design tokens from the provided design system profile. Integrate Shadcn UI components and configure Aceternity for animations.",
+        "details": "1. Configure tailwind.config.js with the brand colors: #FFE85D (banana), #000000 (ink), #F45B69 (hot-pink accent)\n2. Import and configure Google Fonts: Fredoka (display) and Poppins (body)\n3. Parse and implement design tokens from docs/design/design_system_profile.json\n4. Set up Shadcn UI component library\n5. Configure Aceternity for motion/animations\n6. Create a component library with base components following the design system\n7. Implement responsive breakpoints (mobile-first, 375-1440px)\n<info added on 2025-06-29T16:27:56.335Z>\n✅ **Design System Implementation Complete**\n\n**What was accomplished:**\n- ✅ Created comprehensive `tailwind.config.ts` with brand colors (banana #FFE85D, ink #000000, hot-pink #F45B69)\n- ✅ Added Google Fonts integration (Fredoka for display, Poppins for body text)\n- ✅ Updated CSS variables to use brand colors in OKLCH format\n- ✅ Customized Shadcn UI Button component with brand-specific variants (default, secondary, outline, ghost, pill, link)\n- ✅ Customized Shadcn UI Card component with brand styling (border-2, rounded-card, shadow effects)\n- ✅ Added responsive typography scale (display-lg, display-md, heading-lg, etc.)\n- ✅ Implemented playful animations (wiggle, bounce-gentle, pulse-slow) \n- ✅ Created design system utilities in `lib/utils.ts` \n- ✅ Built comprehensive test page showcasing all components and design tokens\n- ✅ Build passes successfully with no errors\n\n**Key Design System Features:**\n- Brand colors properly implemented across all components\n- Typography hierarchy using Fredoka (display) and Poppins (body)\n- Interactive button states with hover effects and scaling\n- Consistent border radius values (pill: 25px, card: 12px, button: 8px)\n- Playful animations matching the mischievous brand personality\n- Mobile-first responsive breakpoints (375px to 1440px)\n- Accessible focus states with banana-colored focus rings\n\n**Files Created/Modified:**\n- `tailwind.config.ts` - Complete brand configuration\n- `src/app/globals.css` - Updated with Google Fonts and brand CSS variables\n- `src/components/ui/button.tsx` - Customized with brand styling and new variants\n- `src/components/ui/card.tsx` - Customized with brand styling\n- `src/lib/utils.ts` - Enhanced with design system utilities\n- `src/app/page.tsx` - Design system showcase/test page\n- `components.json` - Updated with correct config path\n\nThe design system is now ready for use across all pages and components. Next step should be implementing the layout and navigation components.\n</info added on 2025-06-29T16:27:56.335Z>",
+        "testStrategy": "Create a storybook or test page that displays all design tokens, colors, typography, and base components. Verify that the design system matches the specifications in the PRD and design_system_profile.json.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Implement Layout and Navigation Components",
+        "description": "Create the global layout components including header, footer, and navigation that will be shared across all pages. Implement responsive navigation for mobile and desktop.",
+        "details": "1. Create a root layout.tsx with metadata configuration\n2. Implement Header component with navigation links to all main pages\n3. Create Footer component with company info and links\n4. Implement mobile responsive navigation with hamburger menu\n5. Add GDPR cookie consent banner using Zustand for state management\n6. Implement navigation active states\n7. Create loading and error states for the layout\n8. Ensure navigation is accessible with proper ARIA attributes\n<info added on 2025-06-29T16:34:15.026Z>\n✅ **Layout and Navigation Components Implementation Complete**\n\n**What was accomplished:**\n\n**1. Root Layout (`src/app/layout.tsx`):**\n- ✅ Updated to use brand fonts (Fredoka for display, Poppins for body)\n- ✅ Added comprehensive SEO metadata with OpenGraph and Twitter cards\n- ✅ Integrated Header, Footer, and CookieConsent components\n- ✅ Proper HTML structure with semantic main element\n\n**2. Header Component (`src/components/layout/header.tsx`):**\n- ✅ Responsive navigation with mobile hamburger menu\n- ✅ Brand logo with P&P initials in banana circle\n- ✅ Sticky header with backdrop blur effect\n- ✅ Navigation links to all main pages (Home, About, Games, Contact)\n- ✅ Hover animations with hot-pink underline effects\n- ✅ Full accessibility with ARIA attributes and labels\n- ✅ Mobile menu with smooth transitions\n\n**3. Footer Component (`src/components/layout/footer.tsx`):**\n- ✅ Four-column responsive grid layout\n- ✅ Brand section with logo and company description\n- ✅ Organized link sections (Company, Games, Legal)\n- ✅ Copyright notice with dynamic year\n- ✅ Placeholder for future social media links\n- ✅ Brand colors (ink background, banana accents)\n\n**4. Cookie Consent System:**\n- ✅ Zustand store for state management (`src/store/cookie-consent.ts`)\n- ✅ Persistent storage with localStorage\n- ✅ GDPR-compliant banner component (`src/components/layout/cookie-consent.tsx`)\n- ✅ Accept/Decline functionality with proper state management\n- ✅ Banana-themed messaging with brand personality\n- ✅ Fixed bottom positioning with responsive design\n\n**5. Technical Implementation:**\n- ✅ Zustand installed and configured for state management\n- ✅ All components use brand colors and typography\n- ✅ Responsive design (mobile-first approach)\n- ✅ Accessibility features with proper ARIA attributes\n- ✅ Build passes successfully with no errors\n- ✅ TypeScript strict mode compliance\n\n**Key Features:**\n- Sticky header with mobile-responsive navigation\n- Brand-consistent footer with organized links\n- GDPR cookie consent with persistent storage\n- Full accessibility compliance\n- Smooth animations and transitions\n- SEO-optimized metadata structure\n\n**Next Steps Ready:**\n- Layout structure is complete and ready for page content\n- Navigation routes are defined for all main pages\n- Cookie consent system ready for analytics integration\n</info added on 2025-06-29T16:34:15.026Z>",
+        "testStrategy": "Test navigation on various screen sizes to verify responsive behavior. Verify that all links work correctly and active states are properly displayed. Test keyboard navigation and screen reader compatibility for accessibility.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Home Page (P0)",
+        "description": "Develop the home page that introduces Pickup & Play Games and provides a teaser for current and upcoming games with a CTA to explore Bananarchy.",
+        "details": "1. Create page.tsx in the app directory\n2. Implement hero section with studio introduction\n3. Create game teaser section featuring Bananarchy\n4. Add 'Explore Bananarchy' CTA button linking to /games/bananarchy\n5. Implement responsive layout for mobile and desktop\n6. Add SEO metadata and JSON-LD structured data\n7. Optimize images and assets for performance\n8. Implement animations using Aceternity for engaging user experience\n<info added on 2025-06-29T16:41:34.600Z>\n**What was accomplished:**\n\n**1. Main Page Structure (`src/app/page.tsx`):**\n- Implemented comprehensive home page with multiple engaging sections\n- Added proper JSON-LD structured data for SEO\n- Integrated hero section, game teaser, featured cards, and CTA sections\n- Linked to both internal Bananarchy page and external Kickstarter launch site\n\n**2. Hero Section (`src/components/home/hero-section.tsx`):**\n- Eye-catching gradient background with animated elements\n- Large, bold typography using brand fonts (Fredoka display, Poppins body)\n- Dual CTA buttons: \"Discover Bananarchy\" and \"Meet the Team\"\n- Playful bouncing dots animation with staggered delays\n- Scroll indicator with smooth animation\n- Responsive design from mobile to desktop\n\n**3. Game Teaser Section (`src/components/home/game-teaser.tsx`):**\n- Two-column layout showcasing Bananarchy features\n- Feature highlights: Fast-Paced Mayhem, 3-8 Players, Easy to Learn\n- Animated visual card with floating elements\n- Direct link to detailed Bananarchy page\n- External link to Kickstarter launch site\n- Hover effects and scaling animations\n\n**4. Featured Cards Section (`src/components/home/featured-cards.tsx`):**\n- Grid layout displaying 4 actual Bananarchy cards\n- Card assets copied to public directory and optimized\n- Interactive hover effects (scale, rotation, shadow)\n- Card type badges (Action, Reaction, Scoring)\n- Staggered animation delays for visual appeal\n- Responsive grid (1 col mobile, 2 col tablet, 4 col desktop)\n\n**5. Call-to-Action Section:**\n- Bright banana background for high visibility\n- Dual CTAs: Internal exploration and external Kickstarter\n- Engaging copy about joining thousands of players\n- Clear value proposition and urgency\n\n**6. SEO & Performance:**\n- JSON-LD structured data for Organization and Game\n- Optimized images with proper sizing and alt text\n- Meta descriptions and OpenGraph data\n- Build passes with 0 errors and excellent performance\n- Static generation for optimal loading speed\n\n**7. Brand Consistency:**\n- Consistent use of brand colors (banana, ink, hot-pink)\n- Typography hierarchy using design system\n- Playful animations matching brand personality\n- Mischievous tone throughout copy\n\n**Technical Details:**\n- Next.js 15 with App Router\n- TypeScript with proper type safety\n- Tailwind CSS with custom brand tokens\n- Responsive design (375px-1440px)\n- Image optimization with Next.js Image component\n- Accessibility considerations (alt text, semantic HTML)\n\n**Performance Metrics:**\n- Build size: 9.16 kB for home page\n- First Load JS: 122 kB (excellent for rich content)\n- Static generation enabled\n- No build errors or warnings\n</info added on 2025-06-29T16:41:34.600Z>",
+        "testStrategy": "Verify that the page renders correctly on different screen sizes. Test the CTA button to ensure it links to the correct page. Check Lighthouse performance score to ensure it meets the ≥90 target. Validate SEO metadata and structured data.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Implement About Page (P1)",
+        "description": "Create the About page that tells the founders' story and provides a press kit download functionality.",
+        "details": "1. Create page.tsx in the app/about directory\n2. Implement founders story section with text and images\n3. Create press kit download section with downloadable assets\n4. Add 'Contact Us' CTA linking to the contact page\n5. Implement responsive layout\n6. Add SEO metadata and JSON-LD structured data\n7. Optimize media assets for the press kit\n8. Ensure all downloadable content is properly linked",
+        "testStrategy": "Test the press kit download functionality to ensure files are downloadable. Verify responsive layout on different screen sizes. Check that the 'Contact Us' CTA links correctly to the contact page. Validate SEO metadata.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement Games List Page (P2)",
+        "description": "Create the Games page that displays a grid of games, initially only showing the Bananarchy card with a 'View Game' CTA.",
+        "details": "1. Create page.tsx in the app/games directory\n2. Implement a grid layout for game cards\n3. Create a GameCard component for displaying game information\n4. Add the Bananarchy card with image, title, and brief description\n5. Implement 'View Game' CTA on the card linking to /games/bananarchy\n6. Make the grid responsive for different screen sizes\n7. Add SEO metadata and JSON-LD structured data\n8. Structure the page to easily accommodate future game additions",
+        "testStrategy": "Verify that the grid layout is responsive and displays correctly on different screen sizes. Test the 'View Game' CTA to ensure it links to the correct page. Check that the game card displays all required information correctly.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Implement Bananarchy Game Page (P3)",
+        "description": "Develop the dedicated Bananarchy page with all required sections including hero, gameplay overview, video, components, social proof, and CTAs.",
+        "details": "1. Create page.tsx in the app/games/bananarchy directory\n2. Implement hero section with chaotic banana artwork and overlay text\n3. Create gameplay overview with four animated cards (Snatch, Stash, Snack, Smash)\n4. Add embedded YouTube/Vimeo player for how-to-play video\n5. Create 'What's in the Box' section with component mock-ups from docs/assets\n6. Implement social proof section with testimonials and Instagram slider\n7. Add primary CTA banner linking to bananarchylaunch.pickupandplaygames.com\n8. Implement secondary CTA with email opt-in form connected to ConvertKit\n9. Optimize images and video embedding for performance\n10. Add animations using Aceternity for engaging experience",
+        "testStrategy": "Test all interactive elements including video playback and CTAs. Verify that the primary CTA opens the launch microsite in a new tab. Test the email opt-in form with valid and invalid inputs. Check responsive layout on different screen sizes. Verify animations work correctly.",
+        "priority": "high",
+        "dependencies": [
+          3,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Contact Page with ConvertKit Integration (P4)",
+        "description": "Create the Contact page with a simple form that captures emails using the ConvertKit REST API.",
+        "details": "1. Create page.tsx in the app/contact directory\n2. Implement a contact form with fields for name, email, and message\n3. Create form validation using React Hook Form or similar\n4. Set up server action or API route to handle form submission\n5. Integrate with ConvertKit REST API for email capture\n6. Implement success and error states for form submission\n7. Add loading state during form submission\n8. Implement GDPR-compliant checkbox for consent\n9. Add SEO metadata and JSON-LD structured data",
+        "testStrategy": "Test form submission with valid and invalid inputs. Verify that emails are correctly captured in ConvertKit. Test error handling for API failures. Check that success and error messages are displayed correctly. Verify GDPR compliance.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Implement 404 Page with Animation (P5)",
+        "description": "Create a custom 404 page with a fun banana-peel slip animation to enhance user experience when encountering missing pages.",
+        "details": "1. Create not-found.tsx in the app directory\n2. Design and implement a banana-peel slip animation using Aceternity\n3. Add helpful text explaining that the page was not found\n4. Provide navigation links back to main pages\n5. Ensure the page is responsive\n6. Optimize animation performance\n7. Add appropriate error logging",
+        "testStrategy": "Test the 404 page by navigating to non-existent routes. Verify that the animation plays correctly on different devices and browsers. Check that navigation links work correctly. Verify responsive behavior on different screen sizes.",
+        "priority": "low",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Implement State Management with Zustand",
+        "description": "Set up Zustand for global state management, focusing on cookie consent and modal handling as specified in the PRD.",
+        "details": "1. Install Zustand: `npm install zustand`\n2. Create a store directory for state management\n3. Implement a cookie consent store with functions to accept/reject cookies\n4. Create a modal store for handling various modals throughout the site\n5. Implement persistence for cookie consent using localStorage\n6. Create hooks for accessing store state in components\n7. Add TypeScript types for all store states\n8. Implement selectors for optimized re-renders",
+        "testStrategy": "Test cookie consent functionality by verifying that user preferences are saved and persisted. Test modal functionality by opening and closing different modals. Verify that state updates correctly trigger component re-renders. Test persistence across page refreshes.",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Implement Analytics with Plausible and Vercel Web Vitals",
+        "description": "Integrate Plausible analytics and Vercel Web Vitals for tracking user behavior and monitoring performance metrics.",
+        "details": "1. Set up Plausible analytics script\n2. Configure URL parameter tracking using nuqs for `?ref=` tracking\n3. Implement Vercel Web Vitals reporting\n4. Create custom events for important user interactions\n5. Ensure analytics respects cookie consent\n6. Set up dashboard for monitoring KPIs\n7. Implement conversion tracking for email signups and CTAs\n8. Add TypeScript types for analytics events",
+        "testStrategy": "Verify that analytics events are correctly tracked in Plausible dashboard. Test that URL parameters are properly tracked. Verify that Web Vitals are reported to Vercel. Check that analytics respects user cookie consent preferences.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          10
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Implement SEO and Metadata",
+        "description": "Configure server-side rendered metadata and JSON-LD structured data for all pages to optimize search engine visibility.",
+        "details": "1. Create a metadata utility for generating consistent metadata\n2. Implement JSON-LD structured data for each page type\n3. Add Open Graph and Twitter card metadata\n4. Configure canonical URLs\n5. Implement dynamic metadata based on page content\n6. Add robots.txt and sitemap.xml\n7. Ensure all images have appropriate alt text\n8. Implement schema.org markup for organization and products",
+        "testStrategy": "Validate metadata and structured data using tools like Google's Structured Data Testing Tool and Facebook's Sharing Debugger. Verify that all pages have appropriate metadata. Test that dynamic metadata renders correctly based on page content.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Implement Accessibility Features (WCAG 2.1 AA)",
+        "description": "Ensure the website meets WCAG 2.1 AA accessibility standards by implementing proper semantic HTML, keyboard navigation, screen reader support, and focus management.",
+        "details": "1. Audit all components for semantic HTML usage\n2. Implement proper ARIA attributes where needed\n3. Ensure sufficient color contrast according to WCAG standards\n4. Add skip-to-content links\n5. Implement keyboard navigation for all interactive elements\n6. Ensure focus management for modals and dynamic content\n7. Add appropriate alt text for all images\n8. Test with screen readers and fix issues\n9. Implement reduced motion options for animations",
+        "testStrategy": "Run automated accessibility tests using tools like axe or Lighthouse. Perform manual testing with keyboard navigation and screen readers. Verify color contrast meets WCAG 2.1 AA standards. Test focus management in interactive components and modals.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Implement Testing Suite",
+        "description": "Set up Jest and React Testing Library for comprehensive testing with a goal of ≥90% component coverage as specified in the PRD.",
+        "details": "1. Configure Jest and React Testing Library\n2. Set up testing utilities and mocks\n3. Create unit tests for utility functions\n4. Implement component tests for all UI components\n5. Add integration tests for key user flows\n6. Set up test coverage reporting\n7. Configure CI to run tests on every PR\n8. Implement visual regression testing if needed\n9. Create mock services for API integrations",
+        "testStrategy": "Verify that all tests pass and meet the ≥90% coverage target. Test key user flows like navigation, form submission, and CTA interactions. Ensure tests run successfully in the CI pipeline on every PR.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          2,
+          3,
+          10
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Performance Optimization",
+        "description": "Optimize the website to meet the Lighthouse performance score ≥90 on mobile and desktop, and ensure JS bundle size is ≤300kB after tree-shaking.",
+        "details": "1. Implement image optimization using Next.js Image component\n2. Configure font loading optimization\n3. Implement code splitting and lazy loading\n4. Optimize third-party script loading\n5. Minimize CSS and JS bundle sizes\n6. Implement caching strategies\n7. Optimize animations for performance\n8. Configure bundle analyzer to monitor JS bundle size\n9. Implement preloading for critical resources\n10. Optimize server-side rendering and hydration",
+        "testStrategy": "Run Lighthouse audits on all pages to verify performance scores ≥90 on both mobile and desktop. Use bundle analyzer to confirm JS bundle size is ≤300kB after tree-shaking. Test loading performance on various devices and network conditions.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Hero Section Enhancement for Home Page",
+        "description": "Update the home page hero section to match Exploding Kittens product-focused style with a split layout featuring Bananarchy box mockup, game specifications, and improved CTAs for better conversion.",
+        "details": "1. Modify the existing hero section in the home page component to implement a split layout design\n2. Create a left section containing:\n   - Updated headline and subheadline copy focusing on product benefits\n   - Improved call-to-action buttons with higher visibility\n   - Add \"Buy Now\" and \"Learn More\" CTAs with proper tracking attributes\n   - Implement hover states and animations for CTAs using Aceternity\n3. Create a right section containing:\n   - High-quality Bananarchy box mockup image using Next.js Image component\n   - Game specifications panel with key details:\n     - Player count (2-6 players)\n     - Game duration (15-20 minutes)\n     - Age recommendation (8+)\n     - Difficulty level indicator\n4. Implement responsive behavior:\n   - Desktop: Side-by-side split layout (60/40)\n   - Tablet: Side-by-side with adjusted proportions\n   - Mobile: Stacked layout with image first, then content\n5. Add subtle background pattern or texture consistent with Bananarchy branding\n6. Optimize all images for performance using Next.js Image with proper sizing and formats\n7. Implement subtle entrance animations for hero elements using Aceternity\n8. Update the hero section's SEO metadata to reflect the product focus\n9. Ensure accessibility of all new elements with proper contrast, alt text, and ARIA attributes",
+        "testStrategy": "1. Verify the hero section renders correctly on desktop, tablet, and mobile viewports\n2. Test all CTAs to ensure they link to the correct pages and include proper tracking attributes\n3. Validate that the Bananarchy box mockup image loads optimally with proper sizing and formats\n4. Check that all animations work smoothly and don't impact performance metrics\n5. Verify accessibility by testing with screen readers and keyboard navigation\n6. Run Lighthouse performance tests to ensure the enhanced hero section maintains a score ≥90\n7. Test hover states and interactions on all clickable elements\n8. Verify that the game specifications are accurately displayed and properly formatted\n9. Conduct A/B testing to measure conversion improvements from the updated CTAs\n10. Ensure the hero section maintains visual consistency with the rest of the site's design system",
+        "status": "done",
+        "dependencies": [
+          2,
+          3,
+          4
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Implement Exploding Kittens Bold Dark Theme",
+        "description": "Redesign the site with a dramatic dark theme featuring high-contrast design, stacked typography blocks, bold shadows, and gaming-focused aesthetic matching the Exploding Kittens website style.",
+        "details": "1. Update the TailwindCSS configuration to include new dark theme colors:\n   - Primary background: deep charcoal (#121212)\n   - Secondary background: rich black (#0A0A0A)\n   - Accent colors: vibrant reds (#F45B69), electric yellows (#FFE85D)\n   - Text: high-contrast whites (#FFFFFF, #F0F0F0)\n\n2. Create a ThemeProvider component using Zustand for state management:\n   - Implement theme toggle functionality\n   - Store user theme preference in localStorage\n   - Add system preference detection\n\n3. Modify the design system components to support the dark theme:\n   - Update Button components with bold hover effects and shadows\n   - Create stacked typography block components with dramatic spacing\n   - Implement card components with strong border treatments\n\n4. Update the global layout:\n   - Add dramatic diagonal elements and geometric shapes\n   - Implement bold shadow effects on section dividers\n   - Create high-contrast navigation elements\n\n5. Redesign the hero section:\n   - Implement dramatic typography with stacked text blocks\n   - Add animated accent elements that respond to cursor movement\n   - Create bold CTA buttons with hover animations\n\n6. Update all page components to support the new theme:\n   - Home page\n   - About page\n   - Game detail pages\n   - Contact page\n\n7. Add gaming-focused aesthetic elements:\n   - Implement playful micro-interactions\n   - Add subtle particle effects in background\n   - Create card-flip animations for game previews\n\n8. Ensure accessibility is maintained:\n   - Verify contrast ratios meet WCAG 2.1 AA standards\n   - Test with screen readers\n   - Implement reduced motion alternatives\n\n9. Optimize performance:\n   - Lazy load theme-specific assets\n   - Minimize CSS transitions and animations\n   - Ensure smooth theme transitions",
+        "testStrategy": "1. Visual testing:\n   - Compare implementation against Exploding Kittens website reference\n   - Verify all UI elements maintain proper contrast and readability\n   - Check that typography stacking and bold shadows match the design spec\n\n2. Responsive testing:\n   - Test theme appearance across all breakpoints (mobile, tablet, desktop)\n   - Verify that stacked typography blocks adjust appropriately on smaller screens\n   - Ensure gaming aesthetic elements scale correctly\n\n3. Accessibility testing:\n   - Verify contrast ratios meet WCAG 2.1 AA standards using axe or similar tools\n   - Test keyboard navigation with the new theme\n   - Ensure screen readers can properly interpret the updated UI\n\n4. Performance testing:\n   - Measure Lighthouse performance score before and after implementation\n   - Verify JS bundle size remains under target (≤300kB)\n   - Test theme switching performance on lower-end devices\n\n5. User testing:\n   - Conduct A/B testing with a sample of users\n   - Collect feedback on readability, aesthetic appeal, and brand alignment\n   - Verify that the gaming-focused elements enhance rather than distract from content\n\n6. Cross-browser testing:\n   - Verify theme works correctly in Chrome, Firefox, Safari, and Edge\n   - Test theme transitions in all supported browsers\n   - Check for any rendering issues with shadows or animations",
+        "status": "done",
+        "dependencies": [
+          2,
+          3,
+          4,
+          13
+        ],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Hero Image Enhancement for Product Focus",
+        "description": "Redesign the hero image to be larger (800x1000px), remove decorative elements, reduce text sizes, and create a clean product-focused design where the Bananarchy box stands as the primary hero element.",
+        "details": "1. Modify the existing hero image in the home page component:\n   - Increase dimensions to 800x1000px from current size\n   - Create multiple responsive versions for different viewports\n   - Optimize using Next.js Image component with proper loading attributes\n\n2. Clean up the design:\n   - Remove all decorative elements that distract from the product\n   - Reduce text overlay sizes to improve focus on the product\n   - Ensure text remains legible with proper contrast against background\n   - Apply subtle drop shadow to make the product \"pop\" from background\n\n3. Position the Bananarchy box:\n   - Center the product as the main focal point\n   - Apply subtle rotation (5-7 degrees) for dynamic presentation\n   - Ensure product details are clearly visible\n   - Create proper lighting effect to highlight product features\n\n4. Implement responsive behavior:\n   - Ensure the larger image scales appropriately on mobile devices\n   - Maintain product visibility and focus across all breakpoints\n   - Adjust text positioning relative to product on smaller screens\n\n5. Optimize for performance:\n   - Compress image while maintaining visual quality\n   - Implement proper srcset for responsive loading\n   - Add WebP format with fallbacks for older browsers\n   - Ensure Core Web Vitals metrics aren't negatively impacted\n\n6. Update CSS in the hero component:\n   - Adjust container dimensions to accommodate larger image\n   - Update z-index values to ensure proper layering\n   - Implement proper overflow handling for responsive views",
+        "testStrategy": "1. Visual verification:\n   - Compare implementation against design specifications\n   - Verify product is clearly the focal point of the hero section\n   - Confirm all decorative elements have been removed\n   - Check that text size has been reduced appropriately\n\n2. Responsive testing:\n   - Test on multiple devices (mobile, tablet, desktop) to verify proper scaling\n   - Verify the hero image maintains proper aspect ratio across breakpoints\n   - Ensure product remains visible and prominent on all screen sizes\n   - Check that text remains legible at all viewport widths\n\n3. Performance testing:\n   - Measure image load time using browser developer tools\n   - Verify Largest Contentful Paint (LCP) metric meets Core Web Vitals standards\n   - Check total page weight before and after implementation\n   - Confirm proper lazy loading behavior for below-the-fold content\n\n4. Cross-browser testing:\n   - Verify consistent appearance across Chrome, Firefox, Safari, and Edge\n   - Check fallback behavior for browsers that don't support WebP\n   - Ensure image displays correctly with different pixel densities\n\n5. Accessibility testing:\n   - Verify proper alt text is provided for screen readers\n   - Check contrast ratio between text and background meets WCAG standards\n   - Ensure the image doesn't interfere with keyboard navigation",
+        "status": "done",
+        "dependencies": [
+          16,
+          17
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Redesign \"Coming to Kickstarter\" Section with Bold Styling",
+        "description": "Redesign the \"Coming to Kickstarter\" section in the game teaser component to use a bold style with the coming-soon.png image instead of the banana emoji, featuring vibrant orange gradients, black text overlays, and prominent call-to-action buttons.",
+        "details": "1. Replace the current banana emoji with the provided coming-soon.png image:\n   - Import the image using Next.js Image component for optimization\n   - Configure proper sizing and responsive behavior for the image\n   - Ensure proper alt text for accessibility\n\n2. Implement vibrant orange gradient styling:\n   - Add new gradient classes to the TailwindCSS configuration:\n     ```js\n     // tailwind.config.js\n     gradients: {\n       'kickstarter-orange': 'linear-gradient(135deg, #FF9900 0%, #FF5500 100%)',\n     }\n     ```\n   - Apply the gradient as a background to the section container\n\n3. Create bold black text overlays:\n   - Use high-contrast black text (#000000) on the orange gradient background\n   - Implement stacked typography similar to the bold dark theme (Task 17)\n   - Increase font weights to 700 or 800 for headlines\n   - Add subtle text shadows for improved readability\n\n4. Design prominent call-to-action buttons:\n   - Create a primary CTA button with high visibility\n   - Add hover and focus states with animations\n   - Ensure proper tracking attributes for analytics\n   - Implement proper accessibility attributes (aria-labels, etc.)\n\n5. Update the component structure:\n   ```jsx\n   <section className=\"coming-soon-section bg-gradient-kickstarter-orange\">\n     <div className=\"container mx-auto py-12 px-4 md:px-6 lg:px-8\">\n       <div className=\"flex flex-col md:flex-row items-center\">\n         <div className=\"md:w-1/2\">\n           <Image \n             src=\"/images/coming-soon.png\"\n             alt=\"Coming Soon to Kickstarter\"\n             width={400}\n             height={300}\n             priority\n           />\n         </div>\n         <div className=\"md:w-1/2 text-black font-bold\">\n           <h2 className=\"text-3xl md:text-4xl font-extrabold mb-4\">Coming to Kickstarter</h2>\n           <p className=\"text-xl mb-6\">Be the first to know when our campaign launches!</p>\n           <button className=\"bg-black text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-800 transition-all\">\n             Notify Me\n           </button>\n         </div>\n       </div>\n     </div>\n   </section>\n   ```\n\n6. Ensure the design is responsive:\n   - Implement mobile-first approach with appropriate breakpoints\n   - Stack elements vertically on mobile, side-by-side on larger screens\n   - Adjust text sizes and spacing for different viewport sizes",
+        "testStrategy": "1. Visual verification:\n   - Compare implementation against the provided coming-soon.png reference image\n   - Verify the orange gradient matches the vibrant style in the reference\n   - Confirm black text overlays are properly positioned and readable\n   - Check that CTA buttons are prominent and match the design\n\n2. Responsive testing:\n   - Test the component on mobile (320px-428px), tablet (768px-1024px), and desktop (1200px+) viewports\n   - Verify layout adjusts appropriately at each breakpoint\n   - Ensure text remains readable and buttons are properly sized on all devices\n\n3. Accessibility testing:\n   - Verify color contrast meets WCAG AA standards (minimum 4.5:1 for normal text)\n   - Test keyboard navigation for interactive elements\n   - Ensure proper alt text is present for the coming-soon.png image\n   - Check screen reader compatibility for all content\n\n4. Integration testing:\n   - Verify the component renders correctly within the game teaser section\n   - Test that CTA buttons trigger the correct actions\n   - Ensure the component doesn't cause layout shifts or affect other page elements",
+        "status": "done",
+        "dependencies": [
+          17,
+          18
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Convert Site from Dark to Light Theme with Vibrant Styling",
+        "description": "Transform the website from the current dark theme to a lighter theme while maintaining the bold, vibrant styling. Update color schemes across all components while preserving the existing layout structure and images.",
+        "details": "1. Update the TailwindCSS configuration to replace dark theme colors with light theme alternatives:\n   - Change primary background from deep charcoal (#121212) to white (#FFFFFF)\n   - Update secondary background from rich black (#0A0A0A) to light gray (#F5F5F5)\n   - Maintain accent colors: vibrant reds (#F45B69), electric yellows (#FFE85D)\n   - Add banana yellow (#FFE135) and hot-pink (#FF69B4) accent colors\n   - Update text colors from white to dark grays/blacks for proper contrast\n\n2. Modify the ThemeProvider component:\n   - Update default theme to light\n   - Ensure theme toggle functionality works correctly\n   - Update localStorage theme preference handling\n\n3. Update hero section styling:\n   - Replace dark gradients with light gradients featuring banana yellow and hot-pink accents\n   - Ensure product images remain prominent against lighter backgrounds\n   - Maintain the bold, stacked typography style but with updated colors\n\n4. Revise header component:\n   - Change background from black to white\n   - Update navigation text colors for proper contrast\n   - Maintain current layout and interaction patterns\n\n5. Update all button and CTA components:\n   - Ensure proper contrast against light backgrounds\n   - Maintain vibrant hover states and animations\n\n6. Review and update all text elements:\n   - Check contrast ratios against WCAG AA standards (minimum 4.5:1 for normal text)\n   - Update shadow effects to work with light backgrounds\n\n7. Modify card components and content sections:\n   - Update background colors and borders\n   - Ensure consistent styling across all pages\n\n8. Create CSS variables for the new color scheme to ensure consistency:\n   ```css\n   :root {\n     --background-primary: #FFFFFF;\n     --background-secondary: #F5F5F5;\n     --accent-banana: #FFE135;\n     --accent-hotpink: #FF69B4;\n     --text-primary: #121212;\n     --text-secondary: #333333;\n   }\n   ```\n\n9. Update any theme-specific animations or transitions to work with the light theme",
+        "testStrategy": "1. Visual verification:\n   - Compare implementation against design specifications\n   - Verify all components maintain proper styling in the light theme\n   - Confirm text remains legible with proper contrast against backgrounds\n   - Check that accent colors are applied consistently\n\n2. Accessibility testing:\n   - Use tools like Axe or Lighthouse to verify contrast ratios meet WCAG AA standards\n   - Test with screen readers to ensure accessibility is maintained\n   - Verify keyboard navigation works properly\n\n3. Responsive testing:\n   - Test on multiple devices (mobile, tablet, desktop)\n   - Verify that the light theme renders correctly at all breakpoints\n   - Check that all interactive elements remain usable\n\n4. Cross-browser testing:\n   - Verify theme appears correctly in Chrome, Firefox, Safari, and Edge\n   - Check that gradients and colors render consistently across browsers\n\n5. User preference testing:\n   - Verify that system color scheme preferences are respected\n   - Test theme toggle functionality works correctly\n   - Confirm theme preference is saved in localStorage\n\n6. Performance testing:\n   - Ensure the theme change doesn't negatively impact performance metrics\n   - Verify Lighthouse scores remain consistent or improve",
+        "status": "done",
+        "dependencies": [
+          17,
+          18,
+          19
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Implement Dark Mode and Light Mode Toggle System",
+        "description": "Create a complete theme system with dark and light mode toggle functionality that persists user preferences and applies appropriate styling across all components with smooth transitions.",
+        "details": "1. Create a theme store using Zustand:\n   - Implement state for current theme (light/dark)\n   - Add functions to toggle between themes\n   - Set up localStorage persistence for theme preference\n   - Add system preference detection using window.matchMedia\n\n2. Update Tailwind configuration:\n   - Configure the 'darkMode: \"class\"' option in tailwind.config.js\n   - Define color variables for both light and dark modes\n   - Create consistent color palette for text, backgrounds, borders, etc.\n\n3. Create a ThemeToggle component:\n   - Implement a toggle button with sun/moon icons\n   - Add smooth animation for icon transition\n   - Position in the header navigation area\n   - Include appropriate ARIA attributes for accessibility\n\n4. Update existing components to be theme-aware:\n   - Modify the Header component to use theme-specific colors\n   - Update the Footer component with dark/light mode styling\n   - Adjust the Hero section with appropriate background and text colors\n   - Make the Game Teaser component responsive to theme changes\n   - Update all buttons, cards, and UI elements with theme variables\n\n5. Implement smooth transitions:\n   - Add CSS transitions for color and background-color properties\n   - Set appropriate transition duration (around 200-300ms)\n   - Ensure transitions apply to all themed elements\n\n6. Handle edge cases:\n   - Prevent flash of wrong theme on initial load\n   - Ensure theme persists across page navigation\n   - Handle system theme preference changes\n   - Provide fallback styling for older browsers\n\n7. Document theme usage:\n   - Create documentation for how to use theme variables in new components\n   - Document the theme toggle API for other developers",
+        "testStrategy": "1. Functional testing:\n   - Verify theme toggle correctly switches between light and dark modes\n   - Confirm theme preference is saved to localStorage and persists across page refreshes\n   - Test system preference detection by changing system theme\n   - Ensure theme applies correctly on initial page load\n\n2. Visual testing:\n   - Verify all components display correctly in both light and dark modes\n   - Check that text maintains proper contrast ratios in both themes (WCAG AA compliance)\n   - Confirm smooth transitions occur when switching themes\n   - Test on different browsers to ensure consistent appearance\n\n3. Integration testing:\n   - Verify theme toggle works correctly when integrated in the header\n   - Test theme persistence across different pages of the application\n   - Ensure all components respond appropriately to theme changes\n\n4. Accessibility testing:\n   - Verify theme toggle is keyboard accessible\n   - Check that proper ARIA attributes are applied\n   - Test with screen readers to ensure theme changes are announced\n   - Verify color contrast meets WCAG AA standards in both themes\n\n5. Performance testing:\n   - Measure any impact on page load time\n   - Check for layout shifts during theme transitions\n   - Verify smooth animations without jank",
+        "status": "done",
+        "dependencies": [
+          2,
+          3,
+          17
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Fix Theme Toggle Functionality Issues",
+        "description": "Resolve issues with the theme toggle button that's not working properly due to hydration and theme initialization problems by creating a proper ThemeProvider component and simplifying the theme store.",
+        "details": "1. Create a dedicated ThemeProvider component:\n   - Implement a React context provider for theme state\n   - Handle system preference detection with window.matchMedia\n   - Manage theme persistence with localStorage\n   - Prevent hydration mismatches with proper initialization\n\n2. Simplify the theme store:\n   - Refactor the existing Zustand store to have cleaner state management\n   - Remove redundant state and functions\n   - Ensure proper typing for theme values\n   - Add proper error handling for edge cases\n\n3. Fix DOM theme application:\n   - Implement a useEffect hook that applies the theme class to the document.documentElement\n   - Add a script in the document head that reads from localStorage before React hydration\n   - Use the \"use client\" directive appropriately\n   - Ensure the HTML tag receives the correct class before hydration\n\n4. Prevent hydration mismatches:\n   - Add a useLayoutEffect for immediate theme application after hydration\n   - Implement a \"no-flash\" solution using CSS variables\n   - Use the suppressHydrationWarning prop where appropriate\n   - Add proper mounting checks before accessing browser APIs\n\n5. Update the theme toggle button component:\n   - Ensure it correctly calls the theme store's toggle function\n   - Add proper loading/transition states\n   - Implement accessible controls with proper ARIA attributes\n   - Add visual feedback for the current theme state",
+        "testStrategy": "1. Functional testing:\n   - Verify the theme toggle correctly switches between light and dark modes\n   - Test theme persistence by refreshing the page and verifying the theme remains consistent\n   - Check system preference detection by changing system theme settings\n   - Verify theme is correctly applied on initial page load without flashing\n\n2. Hydration testing:\n   - Check browser console for hydration mismatch warnings\n   - Test server-side rendering by disabling JavaScript and verifying correct initial theme\n   - Verify theme works correctly when JavaScript is re-enabled\n   - Test with slow network conditions to ensure no visual flashing occurs\n\n3. Cross-browser testing:\n   - Verify functionality in Chrome, Firefox, Safari, and Edge\n   - Test on mobile browsers (iOS Safari, Android Chrome)\n   - Verify localStorage persistence works across all supported browsers\n   - Check for any browser-specific rendering issues\n\n4. Accessibility testing:\n   - Verify theme toggle is keyboard accessible\n   - Test with screen readers to ensure proper announcements\n   - Check color contrast in both themes meets WCAG standards\n   - Verify focus states are visible in both themes",
+        "status": "done",
+        "dependencies": [
+          21
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Redesign \"Sneak Peek at the Cards\" Section with Bold Vibrant Styling",
+        "description": "Redesign the \"Sneak Peek at the Cards\" section to be more bold and vibrant, replacing the muted grey gradient with colorful banana, hot-pink, and orange gradients, enhancing card visuals with saturated backgrounds, colorful borders, glows, and improved animations.",
+        "details": "1. Update the background styling:\n   - Replace the current muted grey gradient with a bold, colorful gradient using banana yellow (#FFE135), hot-pink (#FF69B4), and orange (#FF9900)\n   - Create new gradient classes in the TailwindCSS configuration:\n     ```js\n     // tailwind.config.js\n     gradients: {\n       'cards-vibrant': 'linear-gradient(135deg, #FFE135 0%, #FF69B4 50%, #FF9900 100%)',\n     }\n     ```\n   - Apply the new gradient to the section container\n\n2. Enhance card visuals:\n   - Increase saturation and vibrancy of card background gradients\n   - Add the following styling to each card:\n     - Colorful borders (2-3px) that complement each card's theme\n     - Outer glow effects using box-shadow with appropriate colors\n     - Stronger inner gradients with higher contrast\n   - Implement CSS for enhanced card styling:\n     ```css\n     .card {\n       border: 2px solid;\n       border-image: linear-gradient(to right, #FFE135, #FF69B4) 1;\n       box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);\n       background: linear-gradient(145deg, rgba(255, 225, 53, 0.8), rgba(255, 105, 180, 0.8));\n     }\n     ```\n\n3. Improve animations and interactions:\n   - Add subtle hover animations that increase glow intensity\n   - Implement smooth transition effects when cards are interacted with\n   - Create a slight floating animation for cards using CSS keyframes:\n     ```css\n     @keyframes float {\n       0% { transform: translateY(0px); }\n       50% { transform: translateY(-10px); }\n       100% { transform: translateY(0px); }\n     }\n     \n     .card {\n       animation: float 3s ease-in-out infinite;\n     }\n     ```\n\n4. Implement theme support:\n   - Ensure all new styling works with both light and dark themes\n   - Create theme-specific variations of the gradients and glows\n   - Use CSS variables to manage theme-specific colors:\n     ```css\n     :root {\n       --card-glow-color: rgba(255, 105, 180, 0.5);\n     }\n     \n     .dark {\n       --card-glow-color: rgba(255, 105, 180, 0.7);\n     }\n     ```\n\n5. Optimize for performance:\n   - Use hardware-accelerated properties for animations (transform, opacity)\n   - Implement will-change CSS property for elements with animations\n   - Ensure gradients and shadows don't cause rendering performance issues",
+        "testStrategy": "1. Visual verification:\n   - Compare implementation against design requirements to ensure the section now uses bold, vibrant colors\n   - Verify the background gradient properly displays banana yellow, hot-pink, and orange colors\n   - Confirm card backgrounds are more saturated with stronger gradients\n   - Check that colorful borders and glows are applied consistently to all cards\n   - Ensure shadows and animations enhance visual impact without being distracting\n\n2. Theme compatibility testing:\n   - Toggle between light and dark themes to verify the section looks appropriate in both modes\n   - Confirm gradients, glows, and shadows adjust properly based on the active theme\n   - Check contrast ratios to ensure text remains readable in both themes\n\n3. Animation and interaction testing:\n   - Verify hover animations work smoothly and enhance user experience\n   - Test floating animations to ensure they're subtle and not distracting\n   - Check that all transitions are smooth and performant\n\n4. Performance testing:\n   - Use Chrome DevTools Performance panel to verify animations run at 60fps\n   - Check for any layout thrashing or excessive repaints caused by the new styling\n   - Verify the section loads and renders efficiently on both desktop and mobile devices\n\n5. Cross-browser testing:\n   - Test in Chrome, Firefox, Safari, and Edge to ensure consistent appearance\n   - Verify gradients, glows, and animations work properly across all supported browsers",
+        "status": "done",
+        "dependencies": [
+          17,
+          20,
+          21
+        ],
+        "priority": "medium",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-06-29T12:45:10.622Z",
+      "updated": "2025-06-29T18:02:29.505Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
