@@ -28,6 +28,10 @@ const config: Config = {
         "glow-banana": "0 0 20px rgba(255, 232, 93, 0.5)",
         "glow-pink": "0 0 20px rgba(244, 91, 105, 0.5)",
       },
+      borderWidth: {
+        "6": "6px",
+        "8": "8px",
+      },
     },
   },
   plugins: [],
