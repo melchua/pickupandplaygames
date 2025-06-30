@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/layout/cookie-consent";
-import { ThemeProvider } from "@/components/theme-provider";
 
 // Fonts
 const fredoka = Fredoka({
@@ -91,14 +90,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fredoka.variable} ${poppins.variable}`}>
       <body className="bg-white dark:bg-dark text-ink dark:text-white font-body antialiased transition-colors duration-300">
-        <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <CookieConsent />
-          </div>
-        </ThemeProvider>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <CookieConsent />
+        </div>
       </body>
     </html>
   );
