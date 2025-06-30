@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export function HeroSectionNeo() {
   return (
@@ -27,164 +28,149 @@ export function HeroSectionNeo() {
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
+        <div className="grid lg:grid-cols-5 gap-12 items-center min-h-[90vh]">
           {/* Left side - Neobrutalism Text Treatment */}
-          <div className="space-y-8 order-2 lg:order-1">
+          <div className="lg:col-span-2 space-y-8 order-2 lg:order-1 text-center lg:text-left">
             {/* Brand Badge - Neobrutalism Style */}
             <div className="inline-block transform -rotate-2">
-              <div className="bg-banana text-ink px-8 py-4 border-6 border-ink shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform">
+              <div className="bg-banana text-ink px-8 py-4 border-6 border-ink shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <span className="font-black text-lg uppercase tracking-wider">
-                  🍺 LAZYLAB BREWCO
+                  NEW! BANANARCHY
                 </span>
               </div>
             </div>
 
             {/* Main heading - Stacked neobrutalism blocks */}
             <div className="space-y-6">
-              {/* Award winning */}
+              {/* First block */}
               <div className="inline-block transform rotate-1">
                 <div className="bg-hot-pink text-white px-8 py-6 border-6 border-ink shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
-                  <h1 className="font-black text-4xl md:text-6xl uppercase tracking-tight">
-                    award winning
+                  <h1 className="font-black text-3xl md:text-5xl uppercase tracking-tight">
+                    AN ADDICTIVE CARD GAME
                   </h1>
                 </div>
               </div>
 
-              {/* IPA's */}
-              <div className="inline-block transform -rotate-1 ml-8">
+              {/* Second block */}
+              <div className="inline-block transform -rotate-1">
                 <div className="bg-banana text-ink px-8 py-6 border-6 border-ink shadow-[12px_12px_0px_0px_rgba(244,91,105,1)]">
-                  <h2 className="font-black text-4xl md:text-6xl uppercase tracking-tight">
-                    ipa&apos;s
+                  <h2 className="font-black text-3xl md:text-5xl uppercase tracking-tight">
+                    OF HILARITY, HIGH-FIVES,
                   </h2>
                 </div>
               </div>
 
-              {/* Embrace the hopvolution */}
+              {/* Third block */}
               <div className="inline-block transform rotate-2">
                 <div className="bg-ink text-white px-6 py-4 border-6 border-hot-pink shadow-[8px_8px_0px_0px_rgba(255,232,93,1)]">
-                  <h3 className="font-black text-2xl md:text-3xl uppercase tracking-wide">
-                    embrace the hopvolution 🌿
+                  <h3 className="font-black text-3xl md:text-5xl uppercase tracking-tight">
+                    AND HAVOC.
                   </h3>
                 </div>
               </div>
             </div>
 
-            {/* Navigation Pills - Neobrutalism Style */}
-            <div className="flex flex-wrap gap-4">
-              {["HOME", "PRODUCTION", "SHOP", "CART"].map((item, index) => (
-                <div
-                  key={item}
-                  className={`px-6 py-3 border-4 border-ink font-bold text-sm uppercase tracking-wider cursor-pointer transform hover:translate-y-1 transition-transform ${
-                    item === "HOME"
-                      ? "bg-hot-pink text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                      : "bg-white text-ink shadow-[4px_4px_0px_0px_rgba(244,91,105,1)] hover:bg-banana"
-                  }`}
-                  style={{
-                    transform: `rotate(${
-                      (index % 2 === 0 ? 1 : -1) * (index + 1)
-                    }deg)`,
-                  }}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            {/* Product highlights */}
-            <div className="grid grid-cols-2 gap-6 mt-8">
-              {/* Best sellers card */}
-              <div className="bg-white border-6 border-ink p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🏆</div>
-                  <div className="font-black text-lg uppercase text-ink">
-                    best sellers
-                  </div>
-                  <div className="text-sm text-ink/70 mt-2">
-                    Notorious HOP IPA
-                    <br />
-                    Ched out IPA
-                    <br />
-                    Lori EA
+            {/* Game specs in neobrutalism style */}
+            <div className="bg-white border-6 border-ink p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <div className="text-banana text-2xl mb-1">👥</div>
+                  <div className="text-ink font-black text-base">3-8</div>
+                  <div className="text-ink/60 text-xs uppercase tracking-wide font-bold">
+                    Players
                   </div>
                 </div>
-              </div>
-
-              {/* IPA perfection card */}
-              <div className="bg-banana border-6 border-ink p-6 shadow-[8px_8px_0px_0px_rgba(244,91,105,1)] transform -rotate-1">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🍺</div>
-                  <div className="font-black text-lg uppercase text-ink">
-                    it&apos;s ipa o&apos;clock
+                <div>
+                  <div className="text-hot-pink text-2xl mb-1">⏱️</div>
+                  <div className="text-ink font-black text-base">15-30</div>
+                  <div className="text-ink/60 text-xs uppercase tracking-wide font-bold">
+                    Minutes
                   </div>
-                  <div className="text-sm text-ink/70 mt-2">
-                    embrace the hopvolution
-                    <br />
-                    💪 $29.99
-                    <br />
-                    💥 $24.99
+                </div>
+                <div>
+                  <div className="text-banana text-2xl mb-1">🎯</div>
+                  <div className="text-ink font-black text-base">13+</div>
+                  <div className="text-ink/60 text-xs uppercase tracking-wide font-bold">
+                    Ages
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Neobrutalism Style */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/shop">
+              <Link
+                href="https://bananarchylaunch.pickupandplaygames.com"
+                target="_blank"
+              >
                 <Button
                   size="lg"
                   className="bg-hot-pink hover:bg-hot-pink text-white font-black px-12 py-6 text-xl border-6 border-ink shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform hover:translate-y-1 transition-all duration-200 uppercase tracking-wide hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                 >
-                  SHOP NOW
+                  🚀 BACK ON KICKSTARTER
                 </Button>
               </Link>
 
-              <Link href="/about">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-white hover:bg-banana text-ink font-black px-8 py-6 text-xl border-6 border-ink shadow-[8px_8px_0px_0px_rgba(244,91,105,1)] transform hover:translate-y-1 transition-all duration-200 uppercase tracking-wide hover:shadow-[4px_4px_0px_0px_rgba(244,91,105,1)]"
-                >
-                  LEARN MORE
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/bananarchy/how-to-play">
+                  <Button
+                    variant="outline"
+                    size="default"
+                    className="bg-banana hover:bg-banana/80 text-ink font-black px-6 py-3 text-base border-6 border-ink shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transform hover:translate-y-1 transition-all duration-200 uppercase tracking-wide"
+                  >
+                    📖 How to Play
+                  </Button>
+                </Link>
+
+                <Link href="/bananarchy">
+                  <Button
+                    variant="outline"
+                    size="default"
+                    className="bg-white hover:bg-white/80 text-ink font-black px-6 py-3 text-base border-6 border-ink shadow-[6px_6px_0px_0px_rgba(244,91,105,1)] transform hover:translate-y-1 transition-all duration-200 uppercase tracking-wide"
+                  >
+                    🍌 Game Details
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
 
           {/* Right side - Product showcase with neobrutalism treatment */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="lg:col-span-3 flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative">
-              {/* Main product container */}
-              <div className="bg-gradient-to-br from-banana to-hot-pink border-8 border-ink p-8 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transform -rotate-2">
-                <div className="bg-white border-4 border-ink p-6 transform rotate-3">
-                  {/* Featured product image placeholder */}
-                  <div className="w-80 h-96 bg-gradient-to-b from-banana/20 to-hot-pink/20 border-4 border-ink flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-6xl mb-4">🍺</div>
-                      <div className="font-black text-2xl uppercase text-ink">
-                        notorious
-                        <br />
-                        hop ipa
-                      </div>
-                      <div className="text-lg text-ink/70 mt-2">$29.99</div>
-                    </div>
-                  </div>
-                </div>
+              {/* Main product image with neobrutalism frame */}
+              <div className="bg-gradient-to-br from-banana/20 to-hot-pink/20 border-8 border-ink p-4 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+                <Image
+                  src="/bananarchy-box-hero.png"
+                  alt="Bananarchy Card Game Box"
+                  width={600}
+                  height={750}
+                  className="max-w-full h-auto border-4 border-ink"
+                  priority
+                />
               </div>
 
               {/* Floating accent elements */}
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-hot-pink border-4 border-ink transform rotate-45"></div>
               <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-banana border-4 border-ink transform rotate-12"></div>
+
+              {/* Fun floating text */}
+              <div className="absolute top-8 -left-8 transform -rotate-12">
+                <div className="bg-ink text-white px-4 py-2 border-4 border-banana">
+                  <span className="font-black text-sm uppercase">CHAOS!</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom decorative elements */}
+      {/* Bottom decorative element */}
       <div className="absolute bottom-0 left-0 right-0">
         <div className="flex justify-center">
           <div className="bg-ink text-white px-8 py-4 border-6 border-banana transform -rotate-1">
             <span className="font-black text-lg uppercase tracking-wider">
-              🌿 feel the flavour of west coast 🌿
+              🍌 Snatch, Stash, Snack & Smash your way to victory! 🍌
             </span>
           </div>
         </div>
