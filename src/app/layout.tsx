@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Poppins } from "next/font/google";
 import "./globals.css";
-import { NeoNav } from "@/components/layout/neo-nav";
+import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/layout/cookie-consent";
 
@@ -91,7 +91,7 @@ export default function RootLayout({
     <html lang="en" className={`${fredoka.variable} ${poppins.variable}`}>
       <body className="bg-white dark:bg-dark text-ink dark:text-white font-body antialiased transition-colors duration-300">
         <div className="flex flex-col min-h-screen">
-          <NeoNav />
+          <Header />
           <main className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />

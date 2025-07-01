@@ -104,32 +104,9 @@ export function HeroSection() {
                   size="lg"
                   className="bg-hot-pink hover:bg-hot-pink/90 text-white font-black px-12 py-6 text-xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide"
                 >
-                  🚀 BACK ON KICKSTARTER
+                  🚀 JOIN FOR EARLY ACCESS
                 </Button>
               </Link>
-
-              {/* Secondary actions */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link href="/bananarchy/how-to-play">
-                  <Button
-                    variant="outline"
-                    size="default"
-                    className="border-3 border-banana bg-banana/20 hover:bg-banana/40 dark:bg-banana/10 dark:hover:bg-banana/20 text-ink dark:text-banana font-bold px-6 py-3 text-base shadow-xl backdrop-blur-sm rounded-xl uppercase tracking-wide"
-                  >
-                    📖 How to Play
-                  </Button>
-                </Link>
-
-                <Link href="/bananarchy">
-                  <Button
-                    variant="outline"
-                    size="default"
-                    className="border-3 border-ink/50 dark:border-white/50 bg-ink/10 dark:bg-white/10 hover:bg-ink/20 dark:hover:bg-white/20 text-ink dark:text-white font-bold px-6 py-3 text-base shadow-xl backdrop-blur-sm rounded-xl uppercase tracking-wide"
-                  >
-                    🍌 Game Details
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -138,11 +115,11 @@ export function HeroSection() {
             <div className="relative">
               {/* Main product image - much larger and clean */}
               <Image
-                src="/bananarchy-box-hero.png"
+                src="/boxmock3.png"
                 alt="Bananarchy Card Game Box"
                 width={800}
                 height={1000}
-                className="max-w-full h-auto drop-shadow-2xl"
+                className="max-w-full h-auto drop-shadow-2xl min-w-[70%]"
                 priority
               />
             </div>

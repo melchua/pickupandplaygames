@@ -48,15 +48,15 @@ export function ThemeToggle() {
       <Button
         variant="ghost"
         size="sm"
-        className="h-10 w-10 p-0 text-ink dark:text-white opacity-50"
+        className="h-12 w-12 p-0 border-4 border-ink bg-banana opacity-50 rounded-lg shadow-[4px_4px_0px_0px_rgba(244,91,105,1)]"
         disabled
         aria-label="Loading theme toggle"
       >
         <svg
-          className="h-5 w-5"
+          className="h-6 w-6 text-ink"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="2"
+          strokeWidth="3"
           stroke="currentColor"
         >
           <path
@@ -74,16 +74,16 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={toggleTheme}
-      className="h-10 w-10 p-0 text-ink dark:text-white hover:text-hot-pink hover:bg-banana/10"
+      className="h-12 w-12 p-0 border-4 border-ink bg-banana hover:bg-hot-pink text-ink hover:text-white transition-all duration-300 ease-out transform hover:translate-y-1 hover:translate-x-1 rounded-lg shadow-[4px_4px_0px_0px_rgba(244,91,105,1)] hover:shadow-[2px_2px_0px_0px_rgba(244,91,105,1)]"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       {theme === "light" ? (
         // Moon icon for switching to dark mode
         <svg
-          className="h-5 w-5"
+          className="h-6 w-6 transform hover:rotate-12 transition-transform duration-300"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="2"
+          strokeWidth="3"
           stroke="currentColor"
         >
           <path
@@ -95,10 +95,10 @@ export function ThemeToggle() {
       ) : (
         // Sun icon for switching to light mode
         <svg
-          className="h-5 w-5"
+          className="h-6 w-6 transform hover:rotate-180 transition-transform duration-500"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="2"
+          strokeWidth="3"
           stroke="currentColor"
         >
           <path
