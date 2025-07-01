@@ -11,6 +11,11 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,11 +27,41 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add your form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(
+          result.error || "Failed to send message. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        "Network error. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -68,7 +103,8 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
 
@@ -86,7 +122,8 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
 
@@ -104,7 +141,8 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
 
@@ -121,17 +159,38 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      disabled={isSubmitting}
                       rows={5}
-                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium resize-none"
+                      className="w-full px-4 py-3 border-4 border-ink rounded-lg focus:outline-none focus:ring-0 focus:border-hot-pink bg-white text-ink font-medium resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full py-4 px-6 bg-banana hover:bg-hot-pink text-ink hover:text-white border-4 border-ink font-bold text-lg uppercase tracking-wider transform hover:translate-y-1 hover:translate-x-1 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] rounded-lg"
+                    disabled={isSubmitting}
+                    className="w-full py-4 px-6 bg-banana hover:bg-hot-pink text-ink hover:text-white border-4 border-ink font-bold text-lg uppercase tracking-wider transform hover:translate-y-1 hover:translate-x-1 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
+
+                  {/* Success Message */}
+                  {submitStatus === "success" && (
+                    <div className="mt-4 p-4 bg-green-100 border-4 border-green-500 rounded-lg shadow-[4px_4px_0px_0px_rgba(34,197,94,1)]">
+                      <p className="text-green-700 font-bold">
+                        ✅ Message sent successfully! We&apos;ll get back to you
+                        within 24-48 hours.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Error Message */}
+                  {submitStatus === "error" && (
+                    <div className="mt-4 p-4 bg-red-100 border-4 border-red-500 rounded-lg shadow-[4px_4px_0px_0px_rgba(239,68,68,1)]">
+                      <p className="text-red-700 font-bold">
+                        ❌ {errorMessage}
+                      </p>
+                    </div>
+                  )}
                 </form>
               </CardContent>
             </Card>
