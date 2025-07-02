@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+// import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navigation = [
   { name: "Home", href: "/", color: "bg-banana", shadow: "rgba(255,232,93,1)" },
