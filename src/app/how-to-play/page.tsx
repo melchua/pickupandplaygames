@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 export default function HowToPlayPage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -16,8 +17,7 @@ export default function HowToPlayPage() {
             How to Play
           </h1>
           <p className="text-xl md:text-2xl text-ink/80 dark:text-white/80 font-body max-w-3xl mx-auto">
-            Learn the rules of Bananarchy and start your chaotic card game
-            adventure!
+            Learn the rules of Bananarchy and join the Bananarchy!
           </p>
         </div>
 
@@ -99,17 +99,18 @@ export default function HowToPlayPage() {
                     mechanics, and card descriptions.
                   </p>
                   <div className="space-y-4">
-                    <Button
-                      className="w-full bg-banana border-4 border-ink text-ink font-bold text-xl px-8 py-4 shadow-[4px_4px_0px_0px_rgba(244,91,105,1)] hover:shadow-[2px_2px_0px_0px_rgba(244,91,105,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-200 transform hover:-rotate-1"
-                      onClick={() => {
-                        // Placeholder for PDF download
-                        alert("PDF download coming soon!");
-                      }}
+                    <a
+                      href="/rulebook.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
                     >
-                      📄 Download Rules PDF
-                    </Button>
+                      <Button className="w-full bg-banana border-4 border-ink text-ink font-bold text-xl px-8 py-4 shadow-[4px_4px_0px_0px_rgba(244,91,105,1)] hover:shadow-[2px_2px_0px_0px_rgba(244,91,105,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-200 transform hover:-rotate-1">
+                        📄 Download Rules PDF
+                      </Button>
+                    </a>
                     <p className="text-sm text-ink/60">
-                      PDF • 2.3 MB • Last updated: December 2024
+                      PDF • Last updated: July 2025
                     </p>
                   </div>
                 </div>
@@ -119,7 +120,7 @@ export default function HowToPlayPage() {
         </div>
 
         {/* Quick Start Guide */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <Card className="border-8 border-ink shadow-[12px_12px_0px_0px_rgba(244,91,105,1)] bg-white dark:bg-dark transform hover:shadow-[8px_8px_0px_0px_rgba(244,91,105,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-300">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl md:text-4xl font-display font-black text-ink dark:text-white mb-4">
@@ -142,7 +143,7 @@ export default function HowToPlayPage() {
                       </h3>
                     </div>
                     <p className="text-ink/80 font-body">
-                      Each player starts with 7 cards. Place the remaining deck
+                      Each player starts with 5 cards. Place the remaining deck
                       in the center.
                     </p>
                   </div>
@@ -196,7 +197,7 @@ export default function HowToPlayPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
 
         {/* Call to Action */}
         <div className="text-center">
@@ -205,11 +206,19 @@ export default function HowToPlayPage() {
               Ready to Go Bananas?
             </h2>
             <p className="text-lg text-ink/80 font-body mb-6">
-              Get your copy of Bananarchy and start the chaos!
+              Reserve your copy of Bananarchy for bonus cards and early access!
             </p>
-            <Button className="bg-hot-pink border-4 border-ink text-white font-bold text-xl px-8 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-200 transform hover:-rotate-2">
-              🍌 Get Bananarchy Now
-            </Button>
+            <Link
+              href="https://bananarchylaunch.pickupandplaygames.com"
+              target="_blank"
+            >
+              <Button
+                size="lg"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white font-black px-16 py-8 text-2xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide animate-pulse hover:animate-none"
+              >
+                🚀 JOIN FOR EARLY ACCESS
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,9 +11,9 @@ export function GameTeaser() {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-ink dark:text-white mb-4">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-ink dark:text-white mb-4 leading-relaxed">
               Meet{" "}
-              <span className="text-banana bg-ink dark:bg-white px-4 py-2 rounded-lg">
+              <span className="text-banana bg-ink dark:bg-white px-4 py-2 my-2 rounded-lg inline-block">
                 Bananarchy
               </span>
             </h2>

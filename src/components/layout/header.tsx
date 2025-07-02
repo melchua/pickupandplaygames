@@ -94,9 +94,9 @@ export function Header() {
           {/* Enhanced Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
             {/* Enhanced Theme Toggle */}
-            <div className="transform hover:rotate-12 hover:scale-110 transition-all duration-300">
+            {/* <div className="transform hover:rotate-12 hover:scale-110 transition-all duration-300">
               <ThemeToggle />
-            </div>
+            </div> */}
 
             {/* Enhanced Mobile Menu Button */}
             <div className="md:hidden">

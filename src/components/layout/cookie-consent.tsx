@@ -35,7 +35,7 @@ export function CookieConsent() {
               variant="outline"
               size="sm"
               onClick={declineCookies}
-              className="border-white text-white hover:bg-white hover:text-ink transition-colors duration-200"
+              className="border-white hover:bg-white hover:text-ink transition-colors duration-200"
             >
               Decline
             </Button>

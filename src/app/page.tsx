@@ -27,14 +27,14 @@ export default function Home() {
             night. Bananarchy is coming to Kickstarter soon!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
+            {/* <Button
               asChild
               size="lg"
               variant="outline"
               className="border-ink text-ink hover:bg-ink hover:text-banana font-semibold"
             >
               <Link href="/games/bananarchy">Explore Bananarchy</Link>
-            </Button>
+            </Button> */}
             <Button
               asChild
               size="lg"
@@ -45,7 +45,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Back on Kickstarter →
+                Join for Early Access →
               </a>
             </Button>
           </div>

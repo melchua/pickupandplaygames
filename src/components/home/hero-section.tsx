@@ -29,7 +29,7 @@ export function HeroSection() {
       <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 items-center min-h-[90vh]">
           {/* Left side - Bold Typography & Content */}
-          <div className="lg:col-span-2 text-center lg:text-left space-y-6 order-2 lg:order-1">
+          <div className="lg:col-span-2 text-center lg:text-left space-y-8 order-2 lg:order-1">
             {/* Brand badge */}
             <div className="inline-block">
               <div className="bg-banana text-black px-6 py-3 rounded-full font-black text-sm uppercase tracking-widest shadow-2xl border-2 border-ink/20 dark:border-white/20 backdrop-blur-sm">
@@ -59,6 +59,21 @@ export function HeroSection() {
                   AND HAVOC.
                 </h3>
               </div>
+            </div>
+
+            {/* Primary CTA - Prominent positioning and styling */}
+            <div className="flex justify-center lg:justify-start py-4">
+              <Link
+                href="https://bananarchylaunch.pickupandplaygames.com"
+                target="_blank"
+              >
+                <Button
+                  size="lg"
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white font-black px-16 py-8 text-2xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide animate-pulse hover:animate-none"
+                >
+                  🚀 JOIN FOR EARLY ACCESS
+                </Button>
+              </Link>
             </div>
 
             {/* Game specs in theme-aware style */}
@@ -92,21 +107,6 @@ export function HeroSection() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Primary CTA - Bold button */}
-            <div className="space-y-4">
-              <Link
-                href="https://bananarchylaunch.pickupandplaygames.com"
-                target="_blank"
-              >
-                <Button
-                  size="lg"
-                  className="bg-hot-pink hover:bg-hot-pink/90 text-white font-black px-12 py-6 text-xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide"
-                >
-                  🚀 JOIN FOR EARLY ACCESS
-                </Button>
-              </Link>
             </div>
           </div>
 

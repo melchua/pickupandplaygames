@@ -36,10 +36,10 @@ const featuredCards = [
   },
   {
     id: 4,
-    name: "Banana Manifesto",
-    type: "Scoring",
-    image: "/card-scoring-banana-manifesto.png",
-    description: "Declare your banana philosophy to the world!",
+    name: "Smash!",
+    type: "Anytime",
+    image: "/card_anytime_smash.jpg",
+    description: "Smash your way to victory!",
     color: "from-hot-pink/70 to-banana/80",
     borderColor: "border-hot-pink/50",
     glowColor: "shadow-hot-pink/25",
@@ -129,23 +129,11 @@ export function FeaturedCards() {
             <p className="font-body text-xl text-white/95 mb-8 drop-shadow-md">
               This is just the beginning! Bananarchy features over{" "}
               <span className="font-bold text-hot-pink bg-white/80 dark:bg-black/40 px-3 py-1 rounded-lg shadow-sm text-2xl">
-                100 unique cards
+                40 unique cards
               </span>
               <br className="md:hidden" />
               designed to keep every game fresh and unpredictable.
             </p>
-            <div className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-banana/90 to-hot-pink/80 border-4 border-white/60 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
-              <span className="text-3xl animate-bounce">🃏</span>
-              <span className="font-display font-bold text-white text-lg drop-shadow-lg">
-                More cards revealed on Kickstarter!
-              </span>
-              <span
-                className="text-3xl animate-bounce"
-                style={{ animationDelay: "0.5s" }}
-              >
-                🎉
-              </span>
-            </div>
           </div>
         </div>
       </div>
