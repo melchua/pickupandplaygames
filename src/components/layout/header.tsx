@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 // import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navigation = [
@@ -44,9 +45,13 @@ export function Header() {
             >
               <div className="relative">
                 <div className="h-12 w-12 bg-banana border-4 border-ink shadow-[4px_4px_0px_0px_rgba(244,91,105,1)] group-hover:shadow-[2px_2px_0px_0px_rgba(244,91,105,1)] flex items-center justify-center transform group-hover:translate-y-1 group-hover:translate-x-1 transition-all duration-200 ease-out group-hover:rotate-3 rounded-full">
-                  <span className="text-ink font-display font-black text-lg transform group-hover:scale-110 transition-transform duration-200">
-                    P&P
-                  </span>
+                  <Image
+                    src="/fav.png"
+                    alt="Pickup & Play Games Logo"
+                    width={40}
+                    height={40}
+                    className="transform group-hover:scale-110 transition-transform duration-200"
+                  />
                 </div>
               </div>
               <div className="hidden sm:block">
