@@ -214,7 +214,7 @@ export default function HowToPlayPage() {
             >
               <Button
                 size="lg"
-                className="bg-emerald-500 hover:bg-emerald-600 text-white font-black px-16 py-8 text-2xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide animate-pulse hover:animate-none"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white font-black px-4 py-3 md:px-8 lg:px-16 md:py-4 lg:py-8 text-sm md:text-xl lg:text-2xl shadow-2xl border-4 border-ink/20 dark:border-white/30 transform hover:scale-105 transition-all duration-300 rounded-2xl uppercase tracking-wide animate-pulse hover:animate-none"
               >
                 🚀 JOIN FOR EARLY ACCESS
               </Button>
