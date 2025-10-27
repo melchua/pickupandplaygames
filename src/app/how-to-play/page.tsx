@@ -48,7 +48,7 @@ export default function HowToPlayPage() {
                   {videoLoaded && (
                     <iframe
                       className="absolute top-0 left-0 w-full h-full"
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                      src="https://www.youtube.com/shorts/O-Nq7IjRo70?autoplay=1"
                       title="How to Play Bananarchy"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
