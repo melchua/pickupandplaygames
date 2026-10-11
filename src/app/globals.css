@@ -1,79 +1,62 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-/* Tailwind v4 theme configuration */
+/* The site is light-only. `dark:` classes left on older pages only apply
+   if a `.dark` class is ever added, never from the visitor's OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Fonts are loaded with next/font in layout.tsx and exposed as CSS variables. */
+@theme inline {
+  --font-display: var(--font-londrina), "Arial Narrow", sans-serif;
+  --font-body: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Tailwind v4 theme configuration. Colours follow the Bananarchy style guide. */
 @theme {
-  /* Brand Colors - Darker, Bolder Palette */
-  --color-banana: #ffe85d;
-  --color-ink: #000000;
+  /* Main colours */
+  --color-banana: #ffc627;
+  --color-ink: #111111;
   --color-hot-pink: #f45b69;
 
-  /* Dark theme colors */
+  /* Secondary branding colours (the ring background) */
+  --color-banana-bright: #fedf23;
+  --color-banana-deep: #fab718;
+  --color-tangerine: #f6a31a;
+  --color-tangerine-deep: #f3941c;
+
+  /* Neutrals */
+  --color-paper: #f4f3f1;
+  --color-line: #edebe9;
+  --color-line-strong: #dddad6;
+  --color-field: #85827a;
+  --color-muted: #55554d;
+  --color-body: #33332e;
+  --color-footer-text: #c9c6c0;
+  --color-footer-line: #3a3a36;
+  --color-tile-dark: #222220;
+
+  /* Card colours */
+  --color-card-action: #f25944;
+  --color-card-reaction: #0084d0;
+  --color-card-anytime: #61bd4f;
+  --color-card-scoring: #ffc627;
+
+  /* Kept for older pages (privacy, 404) */
   --color-dark: #0a0a0a;
   --color-darker: #050505;
-  --color-gray-900: #111111;
-  --color-gray-800: #1a1a1a;
-  --color-gray-700: #2a2a2a;
-
-  /* Extended color palette */
-  --color-primary: #ffe85d;
-  --color-primary-foreground: #000000;
+  --color-primary: #ffc627;
+  --color-primary-foreground: #111111;
   --color-secondary: #f45b69;
   --color-secondary-foreground: #ffffff;
-  --color-accent: #ffe85d;
-  --color-accent-foreground: #000000;
+  --color-accent: #ffc627;
+  --color-accent-foreground: #111111;
+  --color-muted-foreground: #55554d;
 
-  /* Neutral colors */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-
-  /* Brand Typography */
-  --font-family-display: Fredoka, system-ui, sans-serif;
-  --font-family-body: Poppins, system-ui, sans-serif;
-  --font-family-sans: Poppins, system-ui, sans-serif;
-
-  /* Typography Scale */
-  --font-size-display-lg: 4rem;
-  --line-height-display-lg: 1.1;
-  --font-weight-display-lg: 700;
-
-  --font-size-display-md: 3rem;
-  --line-height-display-md: 1.2;
-  --font-weight-display-md: 700;
-
-  --font-size-display-sm: 2.25rem;
-  --line-height-display-sm: 1.2;
-  --font-weight-display-sm: 700;
-
-  --font-size-heading-lg: 2rem;
-  --line-height-heading-lg: 1.3;
-  --font-weight-heading-lg: 600;
-
-  --font-size-heading-md: 1.5rem;
-  --line-height-heading-md: 1.4;
-  --font-weight-heading-md: 600;
-
-  --font-size-heading-sm: 1.25rem;
-  --line-height-heading-sm: 1.4;
-  --font-weight-heading-sm: 600;
-
-  /* Border Radius */
+  /* Border radius */
   --radius-pill: 25px;
   --radius-card: 12px;
   --radius-button: 8px;
   --radius: 0.5rem;
-
-  /* Spacing */
-  --spacing-18: 4.5rem;
-  --spacing-88: 22rem;
 
   /* Responsive breakpoints */
   --breakpoint-xs: 375px;
@@ -82,41 +65,34 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1440px;
-
-  /* Animations */
-  --animate-bounce-gentle: bounce 2s infinite;
-  --animate-pulse-slow: pulse 3s infinite;
-  --animate-wiggle: wiggle 1s ease-in-out infinite;
-}
-
-/* Custom keyframes for animations */
-@keyframes wiggle {
-  0%,
-  100% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(3deg);
-  }
 }
 
 /* Base styles */
 body {
-  font-family: var(--font-family-body);
-  background: linear-gradient(
-    135deg,
-    var(--color-dark) 0%,
-    var(--color-gray-900) 50%,
-    var(--color-dark) 100%
-  );
-  background-attachment: fixed;
-  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  background: #ffffff;
+  color: var(--color-ink);
   min-height: 100vh;
 }
 
-/* Custom gradient utilities */
-.bg-gradient-radial {
-  background: radial-gradient(var(--tw-gradient-stops));
+/* The style guide's "sharp edged gradient": hard-stopped rings.
+   Move the centre with [--rings-x:…] / [--rings-y:…] on the element. */
+@utility bg-rings {
+  background: radial-gradient(
+    circle at var(--rings-x, 50%) var(--rings-y, 50%),
+    var(--color-banana-bright) 0%,
+    var(--color-banana-bright) 16%,
+    var(--color-banana) 16%,
+    var(--color-banana) 34%,
+    var(--color-banana-deep) 34%,
+    var(--color-banana-deep) 54%,
+    var(--color-tangerine) 54%,
+    var(--color-tangerine) 76%,
+    var(--color-tangerine-deep) 76%,
+    var(--color-tangerine-deep) 100%
+  );
 }
 
 /* Border width utilities */

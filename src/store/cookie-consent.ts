@@ -17,16 +17,10 @@ export const useCookieConsent = create<CookieConsentState>()(
       acceptCookies: () => {
         set({ hasConsented: true, showBanner: false });
         // Enable analytics/tracking here when implemented
-        if (typeof window !== "undefined") {
-          console.log("Cookie consent: Analytics enabled");
-        }
       },
       declineCookies: () => {
         set({ hasConsented: false, showBanner: false });
         // Disable analytics/tracking here when implemented
-        if (typeof window !== "undefined") {
-          console.log("Cookie consent: Analytics disabled");
-        }
       },
       hideBanner: () => {
         set({ showBanner: false });

@@ -1,44 +1,47 @@
 import type { Metadata } from "next";
-import { Fredoka, Poppins } from "next/font/google";
+import { Instrument_Sans, Londrina_Solid } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/layout/cookie-consent";
 
-// Fonts
-const fredoka = Fredoka({
+// Fonts: Londrina Solid is the Bananarchy style-guide typeface (headlines),
+// Instrument Sans is the body face.
+const londrina = Londrina_Solid({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "900"],
+  variable: "--font-londrina",
   display: "swap",
 });
 
-const poppins = Poppins({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-body",
+  weight: ["400", "500", "600"],
+  variable: "--font-instrument",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pickupandplaygames.com"),
   title: {
-    default: "Pickup & Play Games - Fun Card Games for Everyone",
-    template: "%s | Pickup & Play Games",
+    default: "Pick Up & Play Games - Fun Card Games for Everyone",
+    template: "%s | Pick Up & Play Games",
   },
   description:
-    "Discover Bananarchy and other exciting card games from Pickup & Play Games. Quick to learn, impossible to put down!",
+    "Discover Bananarchy and other exciting card games from Pick Up & Play Games. Quick to learn, impossible to put down!",
   keywords: [
     "card games",
     "board games",
     "family games",
     "party games",
     "Bananarchy",
-    "Pickup & Play Games",
+    "Pick Up & Play Games",
     "tabletop games",
     "game night",
   ],
-  authors: [{ name: "Pickup & Play Games" }],
-  creator: "Pickup & Play Games",
-  publisher: "Pickup & Play Games",
+  authors: [{ name: "Pick Up & Play Games" }],
+  creator: "Pick Up & Play Games",
+  publisher: "Pick Up & Play Games",
   robots: {
     index: true,
     follow: true,
@@ -54,10 +57,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://pickupandplaygames.com",
-    siteName: "Pickup & Play Games",
-    title: "Pickup & Play Games - Fun Card Games for Everyone",
+    siteName: "Pick Up & Play Games",
+    title: "Pick Up & Play Games - Fun Card Games for Everyone",
     description:
-      "Discover Bananarchy and other exciting card games from Pickup & Play Games. Quick to learn, impossible to put down!",
+      "Discover Bananarchy and other exciting card games from Pick Up & Play Games. Quick to learn, impossible to put down!",
     images: [
       {
         url: "/bananarchy-box-hero.png",
@@ -69,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pickup & Play Games - Fun Card Games for Everyone",
+    title: "Pick Up & Play Games - Fun Card Games for Everyone",
     description:
-      "Discover Bananarchy and other exciting card games from Pickup & Play Games. Quick to learn, impossible to put down!",
+      "Discover Bananarchy and other exciting card games from Pick Up & Play Games. Quick to learn, impossible to put down!",
     images: ["/bananarchy-box-hero.png"],
   },
   icons: {
@@ -79,7 +82,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
-  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -88,9 +90,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${poppins.variable}`}>
-      <body className="bg-white dark:bg-dark text-ink dark:text-white font-body antialiased transition-colors duration-300">
-        <div className="flex flex-col min-h-screen">
+    <html lang="en" className={`${londrina.variable} ${instrument.variable}`}>
+      <body className="bg-white font-body text-ink antialiased">
+        <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
