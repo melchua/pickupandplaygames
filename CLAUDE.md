@@ -4,19 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing site for Pick Up & Play Games and its card game Bananarchy. Next.js 15 App Router, React 19, TypeScript (strict), Tailwind CSS v4. Deployed on Vercel. The one conversion goal is the "Pre-order" button, which sends visitors to the Kickstarter rewards page.
+Marketing site for Pick Up & Play Games and its card game Bananarchy. Next.js 16 App Router (Turbopack), React 19, TypeScript (strict), Tailwind CSS v4. Deployed on Vercel. The one conversion goal is the "Pre-order" button, which sends visitors to the Kickstarter rewards page.
 
 ## Commands
 
 ```bash
-npm run dev        # dev server at http://localhost:3000
-npm run build      # production build (also the strictest check: type errors fail it)
+npm run dev        # dev server at http://localhost:3000 (outputs to .next/dev)
+npm run build      # production build; typechecks but does NOT lint
 npm run start      # serve the production build
-npm run lint       # next lint (eslint-config-next core-web-vitals + typescript)
+npm run lint       # eslint . (flat config in eslint.config.mjs)
 npx tsc --noEmit   # typecheck only
 ```
 
-There is no test runner. `npm run lint` and `npx tsc --noEmit` currently pass clean; keep them that way.
+There is no test runner. `npm run lint` and `npx tsc --noEmit` currently pass clean; keep them that way. Since `next build` no longer lints, run lint explicitly before committing.
+
+Vercel refuses to deploy Next.js versions with known critical vulnerabilities, so a deploy that builds fine but ends in Error with "Vulnerable version of Next.js detected" means bump `next`. Upgrade with `npx @next/codemod@canary upgrade latest`; if it adds `export const instant = false` opt-outs, revert them, since Cache Components are not enabled here.
 
 Task Master task tracking lives in `.taskmaster/` and its CLI reference is in `AGENTS.md` (same content as the old CLAUDE.md). Do not re-run `task-master init`.
 
@@ -37,7 +39,7 @@ Kickstarter/pre-order URLs, price, delivery estimate, player count, funding stat
 
 - `src/components/site/` – the current shared primitives: `Container` (1240px max, fluid gutters), `PreorderButton` (the only primary CTA, three sizes), `CtaBanner` (closing section on the rings background). New sections should compose these.
 - `src/components/home/` – home page sections in render order: `hero-section`, `reviews`, `game-teaser`, `featured-cards`, `box-contents`.
-- `src/components/layout/` – `header` (client, uses `usePathname` for active state; nav wraps instead of a hamburger), `footer`, `cookie-consent`.
+- `src/components/layout/` – `header` (client, uses `usePathname` for active state; nav wraps instead of a hamburger), `footer`, `cookie-consent` (uses `useSyncExternalStore` for its client-only gate; the React hooks lint rule rejects the `setMounted` in `useEffect` pattern).
 - `src/components/ui/` – shadcn (new-york style, see `components.json`) `Button` and `Card`. Still used by the cookie banner and older pages (`privacy`, `not-found`), not by the redesigned pages.
 
 ### Server vs client

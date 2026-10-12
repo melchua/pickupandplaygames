@@ -1,20 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import { useCookieConsent } from "@/store/cookie-consent";
 
+// False during server rendering and hydration, true once the client takes over.
+// The persisted consent lives in localStorage, so the server cannot know it.
+const noopSubscribe = () => () => {};
+function useIsClient() {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false
+  );
+}
+
 export function CookieConsent() {
-  const [mounted, setMounted] = useState(false);
+  const isClient = useIsClient();
   const { hasConsented, showBanner, acceptCookies, declineCookies } =
     useCookieConsent();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Don't render on server or if user has already made a decision
-  if (!mounted || hasConsented !== null || !showBanner) {
+  if (!isClient || hasConsented !== null || !showBanner) {
     return null;
   }
 
