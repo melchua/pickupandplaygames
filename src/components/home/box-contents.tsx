@@ -39,7 +39,7 @@ export function BoxContents() {
             ))}
           </dl>
           <p className="text-body">
-            Want to skip the rulebook? Watch the 2-minute video and play the
+            Want to skip the rulebook? Watch the one-minute video and play the
             game.{" "}
             <Link
               href="/how-to-play"

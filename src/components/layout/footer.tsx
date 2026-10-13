@@ -50,7 +50,7 @@ export function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="py-2 hover:text-white"
+                    className="inline-flex min-h-11 items-center self-start hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -65,7 +65,7 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2 hover:text-white"
+                  className="inline-flex min-h-11 items-center self-start hover:text-white"
                 >
                   {link.name}
                 </a>
@@ -79,7 +79,10 @@ export function Footer() {
             © {currentYear} Pick Up &amp; Play Games Inc. Bananarchy is a
             trademark of Pick Up &amp; Play Games Inc.
           </span>
-          <Link href="/privacy" className="py-1 underline hover:text-white">
+          <Link
+            href="/privacy"
+            className="inline-flex min-h-11 items-center underline hover:text-white"
+          >
             Privacy Policy
           </Link>
         </div>

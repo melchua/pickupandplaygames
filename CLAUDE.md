@@ -26,7 +26,17 @@ Task Master task tracking lives in `.taskmaster/` and its CLI reference is in `A
 
 ### Single source of truth for site facts: `src/lib/site.ts`
 
-Kickstarter/pre-order URLs, price, delivery estimate, player count, funding stat, YouTube video ID, rulebook path, contact email, social links, nav items, and card-type colours all live here and are imported by pages and components. Change copy there, not inline. Pages still inline their own long-form copy (team bios in `about`, rules text in `how-to-play`).
+Kickstarter/pre-order URLs, price, delivery estimate, player count, funding stat, the YouTube video (id, title, upload date, length), rulebook path, banana values, contact email, social links, nav items, and the four card types with their example card images all live here and are imported by pages and components. Change copy there, not inline. Pages still inline their own long-form copy (team bios in `about`, rules text in `how-to-play`).
+
+### How to Play page (`src/app/how-to-play/`)
+
+This is where the printed rulebook's QR codes land, via the `/rules-qr` redirect in `next.config.ts` (adds `utm_source=rulebook`). It is built for a phone at a table:
+
+- `section-nav.tsx` is a sticky "jump to" bar and exports `SECTIONS`, the ids the page sections use. Sections carry `scroll-mt` so anchors clear the bar.
+- `rulebook-notice.tsx` is a client component that reads `useSearchParams` and only renders for `utm_source=rulebook`. It sits inside `Suspense` so the page stays statically prerendered.
+- `video-tile.tsx` lazy-loads the YouTube embed on click.
+- The FAQ uses native `details`/`summary` and is mirrored in `FAQPage` JSON-LD alongside a `VideoObject`.
+- The page sets its own `openGraph`, which replaces the layout's block entirely, so it repeats `siteName`, `url`, and `images`. It also sets a canonical of `/how-to-play` so UTM URLs are not indexed.
 
 ### Styling: Tailwind v4, tokens in CSS, not in `tailwind.config.ts`
 
@@ -39,8 +49,8 @@ Kickstarter/pre-order URLs, price, delivery estimate, player count, funding stat
 
 - `src/components/site/` – the current shared primitives: `Container` (1240px max, fluid gutters), `PreorderButton` (the only primary CTA, three sizes), `CtaBanner` (closing section on the rings background). New sections should compose these.
 - `src/components/home/` – home page sections in render order: `hero-section`, `reviews`, `game-teaser`, `featured-cards`, `box-contents`.
-- `src/components/layout/` – `header` (client, uses `usePathname` for active state; nav wraps instead of a hamburger), `footer`, `cookie-consent` (uses `useSyncExternalStore` for its client-only gate; the React hooks lint rule rejects the `setMounted` in `useEffect` pattern).
-- `src/components/ui/` – shadcn (new-york style, see `components.json`) `Button` and `Card`. Still used by the cookie banner and older pages (`privacy`, `not-found`), not by the redesigned pages.
+- `src/components/layout/` – `header` (client, uses `usePathname` for active state; two rows on phones with a horizontally scrolling nav, one row from `md`), `footer`, `cookie-consent` (small corner card; uses `useSyncExternalStore` for its client-only gate because the React hooks lint rule rejects the `setMounted` in `useEffect` pattern).
+- `src/components/ui/` – shadcn (new-york style, see `components.json`) `Button` and `Card`. Only the older pages (`privacy`, `not-found`) still use them.
 
 ### Server vs client
 

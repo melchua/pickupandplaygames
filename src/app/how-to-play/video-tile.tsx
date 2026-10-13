@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HOW_TO_PLAY_VIDEO_ID } from "@/lib/site";
+import { HOW_TO_PLAY_VIDEO } from "@/lib/site";
 
 // Shows a play tile; the YouTube player only loads once the visitor asks for it.
 export function VideoTile() {
@@ -12,8 +12,8 @@ export function VideoTile() {
       <div className="relative aspect-video min-w-0 flex-[2_1_480px] overflow-hidden rounded-[28px] bg-ink">
         <iframe
           className="absolute inset-0 h-full w-full"
-          src={`https://www.youtube.com/embed/${HOW_TO_PLAY_VIDEO_ID}?autoplay=1`}
-          title="How to Play Bananarchy"
+          src={`https://www.youtube.com/embed/${HOW_TO_PLAY_VIDEO.id}?autoplay=1`}
+          title={HOW_TO_PLAY_VIDEO.title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
@@ -25,7 +25,7 @@ export function VideoTile() {
     <button
       type="button"
       onClick={() => setPlaying(true)}
-      className="bg-rings flex min-h-[clamp(240px,26vw,360px)] min-w-0 flex-[2_1_480px] cursor-pointer flex-col justify-between gap-6 rounded-[28px] p-7 text-left text-ink [--rings-x:78%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="bg-rings flex min-h-[clamp(240px,26vw,360px)] min-w-0 flex-[2_1_480px] cursor-pointer flex-col justify-between gap-5 rounded-[28px] p-5 text-left sm:gap-6 sm:p-7 text-ink [--rings-x:78%] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
     >
       <span className="self-start rounded-full bg-ink px-[15px] py-[9px] text-sm leading-tight font-semibold text-banana">
         Skip the rulebook
@@ -49,7 +49,7 @@ export function VideoTile() {
         </span>
         <span className="flex flex-col gap-1">
           <span className="font-display text-[clamp(32px,3.4vw,46px)] leading-none font-black">
-            Watch the 2-minute video
+            Watch the one-minute video
           </span>
           <span className="font-medium">Then play the game.</span>
         </span>

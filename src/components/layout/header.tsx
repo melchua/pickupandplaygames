@@ -8,27 +8,31 @@ import { PreorderButton } from "@/components/site/preorder-button";
 import { NAVIGATION, SITE_NAME } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
+// Two rows on phones (logo + Pre-order, then a scrollable nav), one row from md up.
 export function Header() {
   const pathname = usePathname();
 
   return (
     <header className="border-b border-line bg-white">
-      <Container className="flex flex-wrap items-center justify-between gap-x-7 gap-y-1.5 py-3.5">
+      <Container className="flex flex-wrap items-center justify-between gap-x-4 py-2 sm:gap-x-7 md:py-3.5">
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="flex min-h-11 items-center gap-2.5 sm:gap-3"
           aria-label={`${SITE_NAME} home`}
         >
-          <Image src="/fav.png" alt="" width={44} height={44} priority />
-          <span className="font-display text-2xl leading-none">
+          <Image src="/fav.png" alt="" width={40} height={40} priority />
+          <span className="font-display text-xl leading-none sm:text-2xl">
             {SITE_NAME}
           </span>
         </Link>
 
-        {/* The nav wraps onto a second row on small screens, so there is no menu button. */}
+        <PreorderButton size="nav" className="md:order-last">
+          Pre-order
+        </PreorderButton>
+
         <nav
           aria-label="Main"
-          className="flex flex-wrap items-center gap-x-7 text-base font-medium"
+          className="order-last flex basis-full items-center gap-x-6 overflow-x-auto text-base font-medium whitespace-nowrap [scrollbar-width:none] md:order-none md:ml-auto md:basis-auto md:overflow-visible [&::-webkit-scrollbar]:hidden"
         >
           {NAVIGATION.map((item) => {
             const active =
@@ -41,7 +45,7 @@ export function Header() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "border-b-2 py-3 transition-colors",
+                  "inline-flex min-h-11 items-center border-b-2 transition-colors",
                   active
                     ? "border-ink"
                     : "border-transparent hover:border-line-strong"
@@ -51,7 +55,6 @@ export function Header() {
               </Link>
             );
           })}
-          <PreorderButton size="nav">Pre-order</PreorderButton>
         </nav>
       </Container>
     </header>

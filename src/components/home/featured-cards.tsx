@@ -1,42 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/site/container";
-
-const cards = [
-  {
-    type: "Action",
-    dot: "bg-card-action",
-    image: "/card-action-banana-republic.png",
-    alt: "Banana Republic card, showing a monkey general in uniform",
-    when: "Played during your turn, one per turn.",
-    example:
-      "Banana Republic: swap all your Bananas with the player who has the most unstashed Banana Cards.",
-  },
-  {
-    type: "Reaction",
-    dot: "bg-card-reaction",
-    image: "/card_reaction_denied.jpg",
-    alt: "Denied! card, showing a monkey holding up a giant hand",
-    when: "Played in reaction to other Monkey Cards.",
-    example: "Denied!: cancel a Monkey Card that was just played.",
-  },
-  {
-    type: "Anytime",
-    dot: "bg-card-anytime",
-    image: "/card_anytime_smash.jpg",
-    alt: "Smash card, showing a monkey slamming down on a banana",
-    when: "Played during anyone's turn.",
-    example: "Smash: flip over any one Banana Card to the rotten side.",
-  },
-  {
-    type: "Scoring",
-    dot: "bg-card-scoring",
-    image: "/card-scoring-bake-banana-bread.png",
-    alt: "Bake Banana Bread card, showing a monkey chef with a fresh loaf",
-    when: "Adds to your score at the end of the game.",
-    example: "Bake Banana Bread: count all your rotten Bananas as 1 point.",
-  },
-];
+import { CARD_TYPES } from "@/lib/site";
 
 // "Four kinds of Monkey Card": one example card per type.
 export function FeaturedCards() {
@@ -54,8 +19,8 @@ export function FeaturedCards() {
         </div>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-x-7 gap-y-9">
-          {cards.map((card) => (
-            <div key={card.type} className="flex flex-col items-start gap-3.5">
+          {CARD_TYPES.map((card) => (
+            <div key={card.name} className="flex flex-col items-start gap-3.5">
               <Image
                 src={card.image}
                 alt={card.alt}
@@ -68,7 +33,7 @@ export function FeaturedCards() {
                   aria-hidden="true"
                   className={`size-2.5 rounded-full ${card.dot}`}
                 />
-                {card.type}
+                {card.name}
               </p>
               <p className="font-semibold">{card.when}</p>
               <p className="text-base text-muted">{card.example}</p>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { PREORDER_URL } from "@/lib/site";
 
 const sizes = {
-  nav: "rounded-full px-[22px] py-[11px] text-base",
+  nav: "rounded-full px-4 py-2.5 text-[15px] sm:px-[22px] sm:py-[11px] sm:text-base",
   md: "rounded-[14px] px-[26px] py-[15px] text-[17px]",
   lg: "rounded-2xl px-9 py-5 text-[19px] leading-tight",
 };

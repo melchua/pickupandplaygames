@@ -1,25 +1,71 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Suspense } from "react";
 import { Container } from "@/components/site/container";
 import { CtaBanner } from "@/components/site/cta-banner";
-import { GAME_FACTS, RULEBOOK_URL } from "@/lib/site";
+import {
+  BANANA_VALUES,
+  CARD_TYPES,
+  GAME_FACTS,
+  HOW_TO_PLAY_VIDEO,
+  RULEBOOK_URL,
+  SITE_NAME,
+} from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { RulebookNotice } from "./rulebook-notice";
+import { SectionNav, SECTIONS } from "./section-nav";
 import { VideoTile } from "./video-tile";
 
+const title = "How to Play Bananarchy";
+const description =
+  "Learn Bananarchy in a minute: watch the video, or read the setup, turn, scoring and FAQ from the official rules.";
+
+// openGraph here replaces the layout's whole openGraph block, so it is complete.
 export const metadata: Metadata = {
-  title: "How to Play Bananarchy",
-  description:
-    "Learn Bananarchy in two minutes: watch the video, or read the setup, turn, scoring and FAQ from the official rules.",
+  title,
+  description,
+  alternates: { canonical: "/how-to-play" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: SITE_NAME,
+    url: "/how-to-play",
+    title,
+    description,
+    images: [
+      {
+        url: "/bananarchy-box-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Bananarchy Card Game",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/bananarchy-box-hero.png"],
+  },
 };
 
 // Rules text follows the First Edition rulebook.
-const setupSteps = [
+const setupSteps: React.ReactNode[] = [
   "Sit in a circle. Separate the Banana and Monkey Cards. Set aside the Active Player Card.",
   "Deal each player a one point value “Single Banana” card, face up in front of them.",
   "Shuffle the remaining Banana Cards and place them with the Rotten side facing up. This is the Banana pile. Leave space for a discard pile. When drawing or discarding Banana Cards, flip them face up (rotten side down).",
   "Shuffle the Monkey Cards and deal five to each player, face down.",
   "Place all remaining Monkey Cards face down within easy reach of all players. This is the Monkey pile. Leave space for a discard pile.",
-  "The Active Player Card goes to the player who last ate a real banana. They start first. All players pick up and look at their Monkey Cards.",
+  <>
+    The Active Player Card goes to the player who last ate a real banana. They
+    start first. All players pick up and look at their Monkey Cards.
+    <span className="mt-2.5 block rounded-xl bg-paper px-4 py-3 text-[15px]">
+      <span className="font-semibold">Or, for a faster start:</span> players
+      pick up their hands at the same time. The first to play an Anytime Card
+      becomes the Active Player. Complete the action on the card, then begin
+      the first turn as normal.
+    </span>
+  </>,
 ];
 
 const endTurnSteps = [
@@ -55,13 +101,6 @@ const specialActions = [
   },
 ];
 
-const cardTypes = [
-  { name: "Action Cards", dot: "bg-card-action", text: "Played during your turn." },
-  { name: "Anytime Cards", dot: "bg-card-anytime", text: "Played during anyone's turn." },
-  { name: "Reaction Cards", dot: "bg-card-reaction", text: "Played in reaction to other Monkey Cards." },
-  { name: "Scoring Cards", dot: "bg-card-scoring", text: "Adds to your score at the end of the game." },
-];
-
 const faqs = [
   {
     question: "What happens when the Monkey pile runs out?",
@@ -95,10 +134,41 @@ const faqs = [
   },
 ];
 
+const videoUrl = `https://www.youtube.com/watch?v=${HOW_TO_PLAY_VIDEO.id}`;
+
+// FAQ rich results plus the video, so search engines can show both.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "VideoObject",
+      name: HOW_TO_PLAY_VIDEO.title,
+      description: HOW_TO_PLAY_VIDEO.description,
+      thumbnailUrl: [
+        `https://i.ytimg.com/vi/${HOW_TO_PLAY_VIDEO.id}/hqdefault.jpg`,
+      ],
+      uploadDate: HOW_TO_PLAY_VIDEO.uploadDate,
+      duration: `PT${HOW_TO_PLAY_VIDEO.durationSeconds}S`,
+      contentUrl: videoUrl,
+      embedUrl: `https://www.youtube.com/embed/${HOW_TO_PLAY_VIDEO.id}`,
+      publisher: { "@type": "Organization", name: SITE_NAME },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
+};
+
 const sectionHeading =
   "font-display text-[clamp(36px,4vw,52px)] leading-none font-black";
 const sectionRow = "flex flex-wrap gap-x-[clamp(28px,4vw,64px)] gap-y-6";
-const sectionPadding = "py-[clamp(48px,6vw,88px)]";
+// scroll-mt keeps anchored headings clear of the sticky section nav.
+const sectionPadding = "scroll-mt-[60px] py-[clamp(48px,6vw,88px)]";
 
 function NumberedSteps({
   steps,
@@ -117,7 +187,7 @@ function NumberedSteps({
           >
             {index + 1}
           </span>
-          <span>{step}</span>
+          <span className="min-w-0 flex-1">{step}</span>
         </li>
       ))}
     </ol>
@@ -142,9 +212,9 @@ export default function HowToPlayPage() {
 
   return (
     <>
-      {/* Intro: video and rulebook */}
-      <section className="pt-[clamp(36px,5vw,72px)] pb-[clamp(40px,5vw,72px)]">
-        <Container className="flex flex-col gap-[clamp(28px,4vw,44px)]">
+      {/* Heading */}
+      <section className="pt-[clamp(20px,4vw,56px)] pb-[clamp(16px,3vw,32px)]">
+        <Container>
           <div className="flex max-w-[760px] flex-col gap-3.5">
             <p className="text-sm font-semibold tracking-[0.02em] text-muted">
               {GAME_FACTS}
@@ -155,32 +225,63 @@ export default function HowToPlayPage() {
             <p className="font-display text-[clamp(24px,2.2vw,30px)] leading-[1.15]">
               Bananarchy is simple. The easiest way to learn is by playing.
             </p>
+            <Suspense fallback={null}>
+              <RulebookNotice />
+            </Suspense>
           </div>
+        </Container>
+      </section>
 
-          <div className="flex flex-wrap gap-5">
-            <VideoTile />
-            <div className="flex min-w-0 flex-[1_1_300px] flex-col justify-between gap-6 rounded-[28px] bg-paper p-7">
-              <div className="flex flex-col gap-2">
-                <h2 className="font-display text-[28px] leading-[1.1]">
-                  Official rules
-                </h2>
-                <p className="text-body">
-                  The complete rulebook, with setup, gameplay and card
-                  descriptions, for offline reference.
-                </p>
+      <SectionNav />
+
+      {/* Video and quick reference */}
+      <section className="pt-[clamp(16px,3vw,32px)] pb-[clamp(40px,5vw,72px)]">
+        <Container className="flex flex-wrap gap-5">
+          <VideoTile />
+          <div className="flex min-w-0 flex-[1_1_300px] flex-col gap-5 rounded-[28px] bg-paper p-7">
+            <h2 className="font-display text-[28px] leading-[1.1]">
+              Quick reference
+            </h2>
+            <dl className="flex flex-col gap-3.5 text-[15px]">
+              <div className="flex flex-col gap-0.5">
+                <dt className="font-semibold">Your turn</dt>
+                <dd className="text-body">
+                  Draw a Monkey Card. Play up to one Action Card and any Anytime
+                  Cards. Refill to five and pass the Active Player Card.
+                </dd>
               </div>
-              <div className="flex flex-col items-start gap-2.5">
-                <a
-                  href={RULEBOOK_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-[14px] border-2 border-ink px-6 py-[13px] font-semibold transition-colors hover:bg-ink hover:text-white"
-                >
-                  Download the rulebook
-                </a>
-                <span className="text-sm text-muted">PDF · First Edition</span>
+              <div className="flex flex-col gap-0.5">
+                <dt className="font-semibold">Banana values</dt>
+                <dd className="text-body">{BANANA_VALUES}</dd>
               </div>
-            </div>
+              <div className="flex flex-col gap-1">
+                <dt className="font-semibold">Card colours</dt>
+                <dd>
+                  <ul className="flex flex-wrap gap-x-4 gap-y-1">
+                    {CARD_TYPES.map((type) => (
+                      <li
+                        key={type.name}
+                        className="flex items-center gap-1.5 font-medium"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`size-2.5 rounded-full ${type.dot}`}
+                        />
+                        {type.name}
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+            <a
+              href={RULEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto inline-flex min-h-11 items-center self-start font-semibold underline underline-offset-4"
+            >
+              Download the full rulebook (PDF)
+            </a>
           </div>
         </Container>
       </section>
@@ -204,46 +305,35 @@ export default function HowToPlayPage() {
       </section>
 
       {/* Set up */}
-      <section className={sectionPadding}>
+      <section id="setup" className={sectionPadding}>
         <Container className={sectionRow}>
           <div className="min-w-0 flex-[1_1_240px]">
-            <h2 className={sectionHeading}>Set up</h2>
+            <h2 className={sectionHeading}>{SECTIONS.setup}</h2>
           </div>
           <div className="flex min-w-0 flex-[3_1_520px] flex-wrap items-start gap-x-[clamp(28px,4vw,48px)] gap-y-8">
             <NumberedSteps
               steps={setupSteps}
               className="min-w-0 flex-[1_1_340px]"
             />
-            <div className="flex max-w-[460px] min-w-0 flex-[1_1_320px] flex-col gap-5">
-              <figure className="flex flex-col gap-2.5">
-                <Image
-                  src="/rules-table-setup.png"
-                  alt="Table layout: the Monkey pile and Banana pile sit in the centre with a discard space beside each, and every player has five Monkey Cards and one Single Banana card"
-                  width={1000}
-                  height={1036}
-                  sizes="(min-width: 1024px) 460px, 90vw"
-                  className="h-auto w-full rounded-[20px]"
-                />
-                <figcaption className="text-[15px] text-muted">
-                  Here&apos;s what the table for a 4 player game might look
-                  like.
-                </figcaption>
-              </figure>
-              <div className="flex flex-col gap-1.5 rounded-[20px] bg-paper px-6 py-[22px]">
-                <h3 className="font-semibold">Alternate step 6</h3>
-                <p className="text-body">
-                  Players pick up their hands at the same time. The first to
-                  play an Anytime Card becomes the Active Player. Complete the
-                  action on the card, then begin the first turn as normal.
-                </p>
-              </div>
-            </div>
+            <figure className="flex max-w-[460px] min-w-0 flex-[1_1_320px] flex-col gap-2.5">
+              <Image
+                src="/rules-table-setup.png"
+                alt="Table layout: the Monkey pile and Banana pile sit in the centre with a discard space beside each, and every player has five Monkey Cards and one Single Banana card"
+                width={1000}
+                height={1036}
+                sizes="(min-width: 1024px) 460px, 90vw"
+                className="h-auto w-full rounded-[20px]"
+              />
+              <figcaption className="text-[15px] text-muted">
+                Here&apos;s what the table for a 4 player game might look like.
+              </figcaption>
+            </figure>
           </div>
         </Container>
       </section>
 
       {/* On your turn */}
-      <section className={`bg-paper ${sectionPadding}`}>
+      <section id="turn" className={`bg-paper ${sectionPadding}`}>
         <Container className={sectionRow}>
           <div className="min-w-0 flex-[1_1_240px]">
             <h2 className={sectionHeading}>On your turn</h2>
@@ -300,7 +390,7 @@ export default function HowToPlayPage() {
       </section>
 
       {/* Winning and scoring */}
-      <section className={sectionPadding}>
+      <section id="scoring" className={sectionPadding}>
         <Container className={sectionRow}>
           <div className="min-w-0 flex-[1_1_240px]">
             <h2 className={sectionHeading}>Winning and scoring</h2>
@@ -332,28 +422,36 @@ export default function HowToPlayPage() {
       </section>
 
       {/* Card types */}
-      <section className={`bg-paper ${sectionPadding}`}>
+      <section id="cards" className={`bg-paper ${sectionPadding}`}>
         <Container className={sectionRow}>
-          <div className="min-w-0 flex-[1_1_240px]">
+          <div className="flex min-w-0 flex-[1_1_240px] flex-col gap-3">
             <h2 className={sectionHeading}>The four Monkey Cards</h2>
+            <p className="max-w-[420px] text-body">
+              The colour of the border tells you when you can play it.
+            </p>
           </div>
-          <dl className="grid min-w-0 flex-[3_1_520px] grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-4">
-            {cardTypes.map((type) => (
-              <div
-                key={type.name}
-                className="flex flex-col gap-1.5 rounded-2xl bg-white px-6 py-[22px]"
-              >
-                <dt className="flex items-center gap-2 font-semibold">
+          <div className="grid min-w-0 flex-[3_1_520px] grid-cols-[repeat(auto-fit,minmax(min(150px,100%),1fr))] gap-x-5 gap-y-8">
+            {CARD_TYPES.map((type) => (
+              <div key={type.name} className="flex flex-col items-start gap-3">
+                <Image
+                  src={type.image}
+                  alt={type.alt}
+                  width={229}
+                  height={320}
+                  sizes="(min-width: 640px) 229px, 45vw"
+                  className="h-auto w-full max-w-[229px] rounded-[14px] shadow-[0_10px_28px_rgba(17,17,17,0.16)]"
+                />
+                <p className="mt-1 flex items-center gap-2 font-semibold">
                   <span
                     aria-hidden="true"
                     className={`size-3 rounded-full ${type.dot}`}
                   />
-                  {type.name}
-                </dt>
-                <dd className="text-body">{type.text}</dd>
+                  {type.name} Cards
+                </p>
+                <p className="text-[15px] text-body">{type.when}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </Container>
       </section>
 
@@ -365,17 +463,34 @@ export default function HowToPlayPage() {
           </div>
           <div className="flex min-w-0 flex-[3_1_520px] flex-col">
             {faqs.map((faq, index) => (
-              <div
+              <details
                 key={faq.question}
-                className={`flex flex-col gap-2 py-[22px] ${
+                className={cn(
+                  "group",
                   index === 0
                     ? "border-t-2 border-ink"
                     : "border-t border-line-strong"
-                }`}
+                )}
               >
-                <h3 className="text-[19px] font-semibold">{faq.question}</h3>
-                <p className="max-w-[720px] text-body">{faq.answer}</p>
-              </div>
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 py-[18px] text-[19px] font-semibold [&::-webkit-details-marker]:hidden">
+                  {faq.question}
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="flex-none transition-transform group-open:rotate-180"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <p className="max-w-[720px] pb-[22px] text-body">{faq.answer}</p>
+              </details>
             ))}
             <div className="mt-4 flex flex-col gap-2 rounded-[20px] bg-paper px-7 py-6">
               <h3 className="font-display text-[28px] leading-[1.1]">
@@ -394,6 +509,11 @@ export default function HowToPlayPage() {
       </section>
 
       <CtaBanner heading="Ready to go bananas?" className="pt-0" />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </>
   );
 }
