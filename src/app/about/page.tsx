@@ -10,7 +10,14 @@ export const metadata: Metadata = {
     "Meet the troop behind Bananarchy: the people at Pick Up & Play Games who make fun, accessible games that bring people together.",
 };
 
-const teamMembers = [
+type TeamMember = {
+  name: string;
+  title: string;
+  imageUrl?: string;
+  bio: string[];
+};
+
+const teamMembers: TeamMember[] = [
   {
     name: "Nathan Lundgaard",
     title: "Co-Founder & Lead Game Designer",
@@ -18,6 +25,14 @@ const teamMembers = [
     bio: [
       "Nathan is an avid supporter of all things nerdy: board and card games, D&D, Warhammer, BattleTech, anime and much more. He has been playing games of all sorts since he was a little kid, everything from Crib, Trouble and Risk to Chess. As he grew, Nathan found love in strategy games such as Age of Empires II and Company of Heroes, and board versions such as Axis & Allies and Diplomacy. He still plays board games regularly and is ready to share everything he has learned in his latest game, Bananarchy.",
       "Outside the games world Nathan enjoys reading, writing, long walks and dancing. He is a dance instructor with over 10 years of experience teaching styles including Salsa, Bachata and Kizomba.",
+    ],
+  },
+  {
+    name: "Joe Main",
+    title: "Co-Founder & Game Designer",
+    bio: [
+      "Joe is, has been and always will be a gamer. Whether that's computer games, wargames or board games, they'll always have a special place in his heart. With a love for D&D from a young age, this grew into a taste for strategy games such as Risk (variants are always welcome at his table) and eventually heavier games like Dune (which doesn't hit the table enough!).",
+      "Formally trained in computer science but working day-to-day in the automotive industry, his career has been as eclectic as his tastes in games.",
     ],
   },
   {
@@ -42,7 +57,6 @@ const teamMembers = [
 
 // From the rulebook credits.
 const moreTroop = [
-  { name: "Joe Main", role: "Game Designer" },
   { name: "Rachel Boyes", role: "Artwork" },
   { name: "Rushan Sanjana", role: "Graphic Designer" },
 ];
@@ -71,13 +85,25 @@ export default function AboutPage() {
                 key={member.name}
                 className="flex flex-col gap-4 rounded-3xl bg-paper p-7"
               >
-                <Image
-                  src={member.imageUrl}
-                  alt={`Profile picture of ${member.name}`}
-                  width={128}
-                  height={128}
-                  className="size-32 rounded-3xl object-cover"
-                />
+                {member.imageUrl ? (
+                  <Image
+                    src={member.imageUrl}
+                    alt={`Profile picture of ${member.name}`}
+                    width={128}
+                    height={128}
+                    className="size-32 rounded-3xl object-cover"
+                  />
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="flex size-32 items-center justify-center rounded-3xl bg-banana font-display text-[48px] leading-none"
+                  >
+                    {member.name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .join("")}
+                  </div>
+                )}
                 <div className="flex flex-col gap-1">
                   <h2 className="font-display text-[32px] leading-[1.05]">
                     {member.name}
