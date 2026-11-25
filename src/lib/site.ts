@@ -17,12 +17,12 @@ export const FUNDING_PROOF = "520% funded on Kickstarter by 1,030+ backers";
 
 // The YouTube how-to-play video. Date and length come from the YouTube page.
 export const HOW_TO_PLAY_VIDEO = {
-  id: "O-Nq7IjRo70",
-  title: "How to play Bananarchy (in 60 seconds, sort of)",
+  id: "QoKznj2hYQ8",
+  title: "The Basics of Bananarchy in 60 Seconds",
   description:
-    "Learn the rules of Bananarchy, the party card game where you don't have to wait your turn, in about a minute.",
-  uploadDate: "2026-03-30T10:00:31-07:00",
-  durationSeconds: 44,
+    "Game designer Nathan Lundgaard walks through the goal of Bananarchy and how the four types of Monkey Cards work.",
+  uploadDate: "2026-10-29T17:27:51-07:00",
+  durationSeconds: 67,
 };
 export const RULEBOOK_URL = "/rulebook.pdf";
 
